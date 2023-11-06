@@ -37,9 +37,9 @@ public class BuilderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= 2 && arrived == false)
+        if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= 1 && arrived == false)
         {
-            arrived= true;
+            arrived = true;
             StartCoroutine(Arrived(wait));
         }
     }
