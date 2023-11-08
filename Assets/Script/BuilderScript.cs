@@ -14,12 +14,14 @@ public class BuilderScript : MonoBehaviour
     public GameObject target;
     public GameObject Nucleus;
 
-    public int wait = 1;
+    public float wait = 0.1f;
 
     bool ToTarget;
     bool arrived;
 
     public int protein;
+
+    float range = 1f;
 
     private IEnumerator coroutine;
     void Start()
@@ -28,36 +30,39 @@ public class BuilderScript : MonoBehaviour
 
         destination = target.transform.position;
         GetComponent<NavMeshAgent>().destination = destination;
-        ToTarget= true;
+        ToTarget = true;
 
-        arrived= false;
+        arrived = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= 1 && arrived == false)
+        if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= (1 + range) && arrived == false)
         {
             arrived = true;
             StartCoroutine(Arrived(wait));
         }
     }
 
-    private IEnumerator Arrived(int seconds)
+    private IEnumerator Arrived(float seconds)
     {
-        Debug.Log("Ran 0");
         if (ToTarget)
         {
-            Debug.Log("Ran 1");
             GetComponent<NavMeshAgent>().isStopped = true;
             GetComponent<NavMeshAgent>().destination = Nucleus.transform.position;
             ToTarget = false;
 
-            yield return new WaitForSeconds(seconds);
-            target.GetComponent<ProteinMoundScript>().protein -= 100;
-            protein += 100;
-
+            while (protein < 100 && target.GetComponent<ProteinMoundScript>().protein > 0)
+            {
+                yield return new WaitForSeconds(seconds);
+                for (int i = 0; i < 10; i++)
+                {
+                    target.GetComponent<ProteinMoundScript>().protein--;
+                    protein++;
+                }
+            }
 
             arrived = false;
 
@@ -65,7 +70,6 @@ public class BuilderScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Ran 2");
             GetComponent<NavMeshAgent>().isStopped = true;
             if (target!=null)
             {
@@ -74,7 +78,7 @@ public class BuilderScript : MonoBehaviour
             
             ToTarget = true;
 
-            yield return new WaitForSeconds(seconds);
+            yield return new WaitForSeconds(seconds*10);
             Nucleus.GetComponent<NucleusScript>().protein += protein;
             protein = 0;
 
