@@ -9,15 +9,15 @@ public class BuilderScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    Vector3 destination;
+    public Vector3 destination;
 
     public GameObject target;
     public GameObject Nucleus;
 
     public float wait = 0.1f;
 
-    bool ToTarget;
-    bool arrived;
+    public bool ToTarget;
+    public bool arrived;
 
     public int protein;
 
@@ -28,12 +28,9 @@ public class BuilderScript : MonoBehaviour
     {
         protein = 0;
 
-        destination = target.transform.position;
-        GetComponent<NavMeshAgent>().destination = destination;
         ToTarget = true;
 
         arrived = false;
-
     }
 
     // Update is called once per frame
@@ -44,6 +41,9 @@ public class BuilderScript : MonoBehaviour
             arrived = true;
             StartCoroutine(Arrived(wait));
         }
+        if (ToTarget) destination = target.transform.position;
+        if (!ToTarget) destination = Nucleus.transform.position;
+        GetComponent<NavMeshAgent>().destination = destination;
     }
 
     private IEnumerator Arrived(float seconds)
@@ -51,7 +51,7 @@ public class BuilderScript : MonoBehaviour
         if (ToTarget)
         {
             GetComponent<NavMeshAgent>().isStopped = true;
-            GetComponent<NavMeshAgent>().destination = Nucleus.transform.position;
+            //GetComponent<NavMeshAgent>().destination = Nucleus.transform.position;
             ToTarget = false;
 
             while (protein < 100 && target.GetComponent<ProteinMoundScript>().protein > 0)
@@ -73,7 +73,7 @@ public class BuilderScript : MonoBehaviour
             GetComponent<NavMeshAgent>().isStopped = true;
             if (target!=null)
             {
-                GetComponent<NavMeshAgent>().destination = destination;
+                //GetComponent<NavMeshAgent>().destination = destination;
             }
             
             ToTarget = true;
