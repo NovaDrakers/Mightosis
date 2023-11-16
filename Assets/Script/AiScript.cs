@@ -7,6 +7,8 @@ public class AiScript : MonoBehaviour
 
     public aiState state;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
