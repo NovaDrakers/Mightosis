@@ -12,6 +12,8 @@ public class BuilderScript : MonoBehaviour
     public Vector3 destination;
 
     public GameObject target;
+
+    /********CHANGED LINE 37 BELOW TO FIND NUCLEUS OBJECT BY TAG BC INSTANTIATED NEW BUILDERS HAVE NO NUCLEUS TO TARGET**********/
     public GameObject Nucleus;
 
     public float wait = 0.1f;
@@ -31,6 +33,10 @@ public class BuilderScript : MonoBehaviour
         ToTarget = true;
 
         arrived = false;
+
+        //              || || ||
+        //#######       \/ \/ \/    #######
+        Nucleus = GameObject.FindGameObjectWithTag("Nucleus");
     }
 
     // Update is called once per frame
