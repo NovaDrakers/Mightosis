@@ -9,6 +9,8 @@ public class PlayerManagerScript : MonoBehaviour
     GameObject selected;
     GameObject outline;
 
+    GameObject[] selecteds;
+
     public GameObject OutlinePrefab;
 
 

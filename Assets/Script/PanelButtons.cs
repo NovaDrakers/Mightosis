@@ -35,7 +35,7 @@ public class PanelButtons : MonoBehaviour
         }
         else if (Nucleus.GetComponent<NucleusScript>().protein >= 100)
         {
-            float randomAngle = Random.Range(1f, 1f * Mathf.PI);
+            float randomAngle = Random.Range(1f, 2f * Mathf.PI);
             float xOffset = spawnDistance * Mathf.Cos(randomAngle);
             float zOffset = spawnDistance * Mathf.Sin(randomAngle);
             Instantiate(Builder, new Vector3(Nucleus.transform.position.x + xOffset, 0f, Nucleus.transform.position.z + zOffset), transform.rotation);
