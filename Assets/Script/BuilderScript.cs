@@ -62,13 +62,16 @@ public class BuilderScript : MonoBehaviour
             //GetComponent<NavMeshAgent>().destination = Nucleus.transform.position;
             ToTarget = false;
 
-            while (protein < 100 && target.GetComponent<ProteinMoundScript>().protein > 0)
+            while (protein < 100 && target != null)
             {
                 yield return new WaitForSeconds(seconds);
                 for (int i = 0; i < 10; i++)
                 {
-                    target.GetComponent<ProteinMoundScript>().protein--;
-                    protein++;
+                    if (target.GetComponent<ProteinMoundScript>().protein > 0)
+                    {
+                        target.GetComponent<ProteinMoundScript>().protein--;
+                        protein++;
+                    }
                 }
             }
 
@@ -79,16 +82,12 @@ public class BuilderScript : MonoBehaviour
         else
         {
             GetComponent<NavMeshAgent>().isStopped = true;
-            if (target!=null)
-            {
-                //GetComponent<NavMeshAgent>().destination = destination;
-            }
             
             ToTarget = true;
 
             yield return new WaitForSeconds(seconds*10);
             Nucleus.GetComponent<NucleusScript>().protein += protein;
-            protein = 0;
+            protein -= protein;
 
             arrived = false;
             GetComponent<NavMeshAgent>().isStopped = false;
