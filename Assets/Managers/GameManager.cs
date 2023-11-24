@@ -18,5 +18,10 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
+    SceneWin,
+    SceneLose,
+    BuildTutorialStart,
+    BattleTutorialStart,
+    MainGameStart,
 
 }
