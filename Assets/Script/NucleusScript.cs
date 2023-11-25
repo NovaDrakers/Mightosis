@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class NucleusScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class NucleusScript : MonoBehaviour
 
     public int protein;
     GameObject Panel;
+    Canvas canvas;
 
     public TextMeshProUGUI ProteinText;
 
@@ -19,6 +21,7 @@ public class NucleusScript : MonoBehaviour
     {
         protein = 0;
         Panel = GameObject.Find("NucleusPanel");
+        canvas = GameObject.FindAnyObjectByType<Canvas>();
 
         Panel.SetActive(false);
     }
@@ -27,15 +30,27 @@ public class NucleusScript : MonoBehaviour
     void Update()
     {
         ProteinText.text = "Protein = " + protein.ToString();
+      
     }
 
     private void OnMouseDown()
     {
         if (!Panel.activeSelf)
         {
+            Transform canvasTransform = canvas.transform;
+
+            // Iterate through all the children of the Canvas
+            for (int i = 0; i < canvasTransform.childCount; i++)
+            {
+                // Access each child using the getChild method
+                Transform child = canvasTransform.GetChild(i);
+
+                child.gameObject.SetActive(false);
+            }
             Panel.SetActive(true);
         }
     }
+
 
     public void GiveProtein()
     {

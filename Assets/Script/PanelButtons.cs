@@ -1,4 +1,5 @@
 //using System;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,10 @@ public class PanelButtons : MonoBehaviour
     public GameObject Builder;
     public GameObject Nucleus;
 
-    
-   
+    public int ranged = 0;
+    public int melee = 0;
+    public int tank = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,5 +46,41 @@ public class PanelButtons : MonoBehaviour
             Debug.Log("builder instantiated");
         }
         
+    }
+
+    public void CreateTroop(string troop)
+    {
+        Nucleus = GameObject.FindGameObjectWithTag("Nucleus");
+        if (Nucleus.GetComponent<NucleusScript>().protein >= 100)
+        {
+            Nucleus.GetComponent<NucleusScript>().protein -= 100;
+            switch (troop)
+            {
+                case "Ranged":
+
+                    ranged++;
+                    break;
+
+                case "Melee":
+
+                    melee++;
+                    break;
+
+                case "Tank":
+
+                    tank++;
+                    break;
+
+                default:
+
+                    break;
+            }
+        }
+        Debug.Log("" + ranged +", " + melee + ", " + tank);
+    }
+
+    public void SpawnTroop()
+    {
+
     }
 }
