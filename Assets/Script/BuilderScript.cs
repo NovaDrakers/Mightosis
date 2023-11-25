@@ -37,13 +37,14 @@ public class BuilderScript : MonoBehaviour
         //              || || ||
         //#######       \/ \/ \/    #######
         Nucleus = GameObject.FindGameObjectWithTag("Nucleus");
+
+        if (target == null) GetComponent<NavMeshAgent>().isStopped = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (ToTarget) destination = target.transform.position;
+        if (ToTarget && target != null) destination = target.transform.position;
         if (!ToTarget) destination = Nucleus.transform.position;
         GetComponent<NavMeshAgent>().destination = destination;
 
