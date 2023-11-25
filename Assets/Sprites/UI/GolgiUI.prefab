@@ -851,6 +851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114754138890319752, guid: ccd64f90b962e4a789be11ce73c18abe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11e192294f315af4abbddcb0d95992b6, type: 3}
     - target: {fileID: 224544318620525178, guid: ccd64f90b962e4a789be11ce73c18abe, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
