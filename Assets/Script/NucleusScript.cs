@@ -10,6 +10,7 @@ public class NucleusScript : MonoBehaviour
     // Start is called before the first frame update
 
     public int protein;
+    public int health;
     GameObject Panel;
     Canvas canvas;
 
@@ -30,7 +31,14 @@ public class NucleusScript : MonoBehaviour
     void Update()
     {
         ProteinText.text = "Protein = " + protein.ToString();
-      
+        
+
+        //handling of game lose
+        if(health == 0)
+        {
+            GameManager.Instance.UpdateGameState(GameState.SceneLose);
+        }
+
     }
 
     private void OnMouseDown()
