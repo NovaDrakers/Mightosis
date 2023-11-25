@@ -1034,7 +1034,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Builder: {fileID: 0}
+  Ranged: {fileID: 4325747316064590497, guid: 7b2f07d00b5fe1040be422c17ab2348d, type: 3}
+  Melee: {fileID: 6375270764242608574, guid: 535a1e8876891864baede0eaf5c152c8, type: 3}
+  Tank: {fileID: 9020202378083875473, guid: f66a78bd08dab6c4ba0a5d6c9a155249, type: 3}
   Nucleus: {fileID: 0}
+  Golgi: {fileID: 0}
   ranged: 0
   melee: 0
   tank: 0
@@ -2621,7 +2625,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1453720148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 343119854}
+        m_TargetAssemblyTypeName: PanelButtons, Assembly-CSharp
+        m_MethodName: SpawnTroop
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Melee
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1453720148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3025,7 +3041,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Builder: {fileID: 8058363111763403497, guid: c4734a64703bacc418f234ea00e95673, type: 3}
+  Ranged: {fileID: 0}
+  Melee: {fileID: 0}
+  Tank: {fileID: 0}
   Nucleus: {fileID: 1619357750}
+  Golgi: {fileID: 0}
   ranged: 0
   melee: 0
   tank: 0
@@ -3645,7 +3665,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2055911804}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 343119854}
+        m_TargetAssemblyTypeName: PanelButtons, Assembly-CSharp
+        m_MethodName: SpawnTroop
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Tank
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2055911804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3900,7 +3932,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2090020576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 343119854}
+        m_TargetAssemblyTypeName: PanelButtons, Assembly-CSharp
+        m_MethodName: SpawnTroop
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Ranged
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2090020576
 MonoBehaviour:
   m_ObjectHideFlags: 0
