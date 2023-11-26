@@ -11,79 +11,63 @@ public class NucleusScript : MonoBehaviour
 
     public int protein;
     public int health;
-    GameObject Panel;
-    Canvas canvas;
+    public GameObject Panel;
 
-    public TextMeshProUGUI ProteinText;
+    public TextMeshProUGUI[] ProteinText;
 
-    public GameObject builder;
+    public GameObject Builder;
+
+    public float spawnDistance = 1f;
 
     void Start()
     {
-        protein = 0;
-        Panel = GameObject.Find("NucleusPanel");
-        canvas = GameObject.FindAnyObjectByType<Canvas>();
-
-        Panel.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        ProteinText.text = "Protein = " + protein.ToString();
+        foreach (var p in ProteinText)
+        {
+            p.text = "Protein = " + protein.ToString();
+        }
         
-
+    
+        
         //handling of game lose
         if(health == 0)
         {
-            GameManager.Instance.UpdateGameState(GameState.SceneLose);
+            //GameManager.Instance.UpdateGameState(GameState.SceneLose);
+        }
+
+    }
+
+    public void CreateWorker()
+    {
+        if (Builder == null)
+        {
+            Debug.Log("builder prefab not found");
+        }
+        else if (protein >= 100)
+        {
+            float randomAngle = Random.Range(1f, 2f * Mathf.PI);
+            float xOffset = spawnDistance * Mathf.Cos(randomAngle);
+            float zOffset = spawnDistance * Mathf.Sin(randomAngle);
+            Instantiate(Builder, new Vector3(transform.position.x + xOffset, 0f, transform.position.z + zOffset), transform.rotation);
+            protein -=  100;
+            Debug.Log("builder instantiated");
         }
 
     }
 
     private void OnMouseDown()
     {
-        if (!Panel.activeSelf)
-        {
-            Transform canvasTransform = canvas.transform;
-
-            // Iterate through all the children of the Canvas
-            for (int i = 0; i < canvasTransform.childCount; i++)
-            {
-                // Access each child using the getChild method
-                Transform child = canvasTransform.GetChild(i);
-
-                child.gameObject.SetActive(false);
-            }
-            Panel.SetActive(true);
-        }
+        GetComponent<ClickHandler>().LeftClicked(Panel);
     }
 
 
     public void GiveProtein()
     {
-        this.protein += 100;
-    }
-
-    public void CreateBuilder()
-    {
-        if(this.protein >= 100)
-        {
-            protein -= 100;
-            Debug.Log("Created Builder");
-        } else
-        {
-            Debug.Log("Not enough protein");
-        }
-    }
-
-    public void ClosePanels()
-    {
-        GameObject[] TempPanels;
-        TempPanels = GameObject.FindGameObjectsWithTag("TempPanel");
-        foreach (GameObject panel in TempPanels)
-        {
-            panel.SetActive(false);
-        }
+        protein += 100;
     }
 }

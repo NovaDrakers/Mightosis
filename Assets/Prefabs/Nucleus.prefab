@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303292503162007881}
   - component: {fileID: 736442945795725985}
+  - component: {fileID: 1700324261984458890}
   - component: {fileID: 7805802690575410186}
   - component: {fileID: 7353824965537934506}
   - component: {fileID: 8766810532702795248}
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6260411247250144670}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.4, y: 1, z: -39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -87,6 +88,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1700324261984458890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260411247250144670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7088ce6c2c8afe84d9f8d5dbf3f68066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7805802690575410186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,8 +113,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   protein: 0
-  ProteinText: {fileID: 0}
-  builder: {fileID: 0}
+  health: 0
+  Panel: {fileID: 0}
+  ProteinText:
+  - {fileID: 0}
+  - {fileID: 0}
+  Builder: {fileID: 8058363111763403497, guid: c4734a64703bacc418f234ea00e95673, type: 3}
+  spawnDistance: 1
 --- !u!208 &7353824965537934506
 NavMeshObstacle:
   m_ObjectHideFlags: 0

@@ -91,7 +91,6 @@ public class PlayerManagerScript : MonoBehaviour
             foreach (GameObject i in selecteds)
             {
                 outline.Add(Instantiate(OutlinePrefab, i.transform.position, Quaternion.Euler(90, 0, 0), i.transform));
-                Debug.Log("1");
             }
         }
 
