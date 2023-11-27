@@ -68,11 +68,20 @@ public class BuilderScript : MonoBehaviour
                 yield return new WaitForSeconds(seconds);
                 for (int i = 0; i < 10; i++)
                 {
-                    if (target.GetComponent<ProteinMoundScript>().protein > 0)
+                    //*** ADDED THIS IF STATEMENT TO CHECK  IF OBJECT HAS THE SCRIPT
+                    if (target.GetComponent<ProteinMoundScript>() == null)
                     {
-                        target.GetComponent<ProteinMoundScript>().protein--;
-                        protein++;
+                        break;
                     }
+                    else
+                    {
+                        if (target.GetComponent<ProteinMoundScript>().protein > 0)
+                        {
+                            target.GetComponent<ProteinMoundScript>().protein--;
+                            protein++;
+                        }
+                    }
+                    
                 }
             }
 
