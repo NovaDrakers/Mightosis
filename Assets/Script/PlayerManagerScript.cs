@@ -22,8 +22,6 @@ public class PlayerManagerScript : MonoBehaviour
 
     public RectTransform Selector;
 
-    [SerializeField] CanvasScaler canvasScaler = null;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +52,8 @@ public class PlayerManagerScript : MonoBehaviour
             float height = Input.mousePosition.y - mousePositionDown.y;
 
             Selector.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
-            Selector.anchoredPosition = (new Vector2(mousePositionDown.x, mousePositionDown.y) + new Vector2(width/2, height/2)) / canvasScaler.transform.localScale;
+            Selector.anchoredPosition = new Vector2(mousePositionDown.x, mousePositionDown.y) + new Vector2(width/2, height/2);
+                //+ 0(new Vector2(width/2, height/2)) / canvasScaler.transform.localScale);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -102,8 +101,21 @@ public class PlayerManagerScript : MonoBehaviour
             {
                 foreach (GameObject i in selecteds)
                 {
-                    i.GetComponent<BuilderScript>().target = hit.collider.gameObject;
-                    if (!i.GetComponent<BuilderScript>().arrived) i.GetComponent<NavMeshAgent>().isStopped = false;
+                    if (hit.collider.gameObject.GetComponent<ProteinMoundScript>() != null)
+                    {
+                        i.GetComponent<BuilderScript>().target = hit.collider.gameObject;
+                        if (!i.GetComponent<BuilderScript>().arrived) i.GetComponent<NavMeshAgent>().isStopped = false;
+                    } else
+                    {
+                        i.GetComponent<BuilderScript>().destination = hit.point;
+                        if (!i.GetComponent<BuilderScript>().arrived)
+                        {
+                            i.GetComponent<BuilderScript>().target = null;
+                            i.GetComponent<NavMeshAgent>().isStopped = false;
+                        }   
+                    }
+
+                    
                 }
             }
         }

@@ -20,6 +20,26 @@ public class CameraScript : MonoBehaviour
     {
         //RB.velocity = velocity;
         RB.AddForce(velocity * speed);
+
+        if (Input.mousePosition.x >= Screen.width *0.95 && Input.mousePosition.x <= Screen.width)
+        {
+            transform.Translate(new Vector3(1,0,0) * Time.deltaTime * speed, Space.World);
+        }
+
+        if (Input.mousePosition.x <= Screen.width *0.05 && Input.mousePosition.x >= 0)
+        {
+            transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * speed, Space.World);
+        }
+
+        if (Input.mousePosition.y >= Screen.height * 0.95  && Input.mousePosition.y <= Screen.height)
+        {
+            transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed, Space.World);
+        }
+
+        if (Input.mousePosition.y <= Screen.height * 0.05  && Input.mousePosition.y >= 0)
+        {
+            transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * speed, Space.World);
+        }
     }
 
     public void Move(InputAction.CallbackContext context)

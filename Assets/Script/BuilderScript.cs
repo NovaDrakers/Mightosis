@@ -48,59 +48,76 @@ public class BuilderScript : MonoBehaviour
         if (!ToTarget) destination = Nucleus.transform.position;
         GetComponent<NavMeshAgent>().destination = destination;
 
-        if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= (1 + range) && arrived == false)
+        if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= (1 + range) && arrived == false && target != null)
         {
             arrived = true;
             StartCoroutine(Arrived(wait));
+        }
+
+        if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= (0.1) && arrived == false && target == null)
+        {
+            arrived = true;
+            GetComponent<NavMeshAgent>().isStopped = true;
+            destination = new Vector3(9999,9999,9999);
         }
     }
 
     private IEnumerator Arrived(float seconds)
     {
-        if (ToTarget)
+        if (target != null)
         {
-            GetComponent<NavMeshAgent>().isStopped = true;
-            //GetComponent<NavMeshAgent>().destination = Nucleus.transform.position;
-            ToTarget = false;
-
-            while (protein < 100 && target != null)
+            if (target.GetComponent<ProteinMoundScript>() != null)
             {
-                yield return new WaitForSeconds(seconds);
-                for (int i = 0; i < 10; i++)
+                if (ToTarget)
                 {
-                    //*** ADDED THIS IF STATEMENT TO CHECK  IF OBJECT HAS THE SCRIPT
-                    if (target.GetComponent<ProteinMoundScript>() == null)
+
+                    GetComponent<NavMeshAgent>().isStopped = true;
+                    //GetComponent<NavMeshAgent>().destination = Nucleus.transform.position;
+                    ToTarget = false;
+
+                    while (protein < 100 && target != null)
                     {
-                        break;
-                    }
-                    else
-                    {
-                        if (target.GetComponent<ProteinMoundScript>().protein > 0)
+                        yield return new WaitForSeconds(seconds);
+                        for (int i = 0; i < 10; i++)
                         {
-                            target.GetComponent<ProteinMoundScript>().protein--;
-                            protein++;
+                            {
+                                if (target.GetComponent<ProteinMoundScript>().protein > 0)
+                                {
+                                    target.GetComponent<ProteinMoundScript>().protein--;
+                                    protein++;
+                                }
+                            }
+
                         }
                     }
-                    
+
+                    arrived = false;
+
+                    GetComponent<NavMeshAgent>().isStopped = false;
+                }
+                else
+                {
+                    GetComponent<NavMeshAgent>().isStopped = true;
+
+                    ToTarget = true;
+
+                    yield return new WaitForSeconds(seconds*10);
+                    Nucleus.GetComponent<NucleusScript>().protein += protein;
+                    protein -= protein;
+
+                    arrived = false;
+                    GetComponent<NavMeshAgent>().isStopped = false;
                 }
             }
 
-            arrived = false;
+            if (target.GetComponent<NucleusScript>() != null)
+            {
 
-            GetComponent<NavMeshAgent>().isStopped = false;
-        }
-        else
+            }
+
+        } else
         {
-            GetComponent<NavMeshAgent>().isStopped = true;
             
-            ToTarget = true;
-
-            yield return new WaitForSeconds(seconds*10);
-            Nucleus.GetComponent<NucleusScript>().protein += protein;
-            protein -= protein;
-
-            arrived = false;
-            GetComponent<NavMeshAgent>().isStopped = false;
         }
     }
 }
