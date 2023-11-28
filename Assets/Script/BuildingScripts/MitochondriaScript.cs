@@ -5,14 +5,7 @@ using TMPro;
 
 public class MitochondriaScript : MonoBehaviour
 {
-
-
-    public int ATP;
-
-    public GameObject panel;
-    public TextMeshProUGUI[] atpText;
-
-    Coroutine currentCoroutine;
+    private bool notDestroyed = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,22 +16,24 @@ public class MitochondriaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (var atp in atpText)
-        {
-            atp.text = "ATP:  " + ATP.ToString();
-        }
 
     }
 
     private void OnDestroy()
     {
-        StopCoroutine(ProduceAtp());
+        notDestroyed = false;
     }
 
     IEnumerator ProduceAtp()
     {
-        ATP++;
 
-        yield return new WaitForSeconds(2f);
+        while(notDestroyed == true)
+        {
+
+            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().atp += 1;
+
+            yield return new WaitForSeconds(2f);
+        }
+        
     }
 }

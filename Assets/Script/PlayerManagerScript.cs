@@ -5,6 +5,7 @@ using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerManagerScript : MonoBehaviour
 {
@@ -21,6 +22,15 @@ public class PlayerManagerScript : MonoBehaviour
     public Camera viewCam;
 
     public RectTransform Selector;
+
+    //for player ui --------------------------------
+    public int atp;
+    public int protein;
+    public int population;
+    public int timer;
+
+    public TextMeshProUGUI atpText;
+    // --------------------------------------------------
 
     // Start is called before the first frame update
     void Start()
@@ -105,5 +115,8 @@ public class PlayerManagerScript : MonoBehaviour
                 }
             }
         }
+
+        //Player UI --------------------------------------------------------------------------------------------
+        atpText.text = "ATP: " + atp.ToString();
     }
 }
