@@ -257,11 +257,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100584131}
   m_CullTransparentMesh: 1
---- !u!1 &103223210 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4512906092801343865, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
-  m_PrefabInstance: {fileID: 1077995472}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &115976286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,11 +1396,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501455390}
   m_CullTransparentMesh: 1
---- !u!1 &597505574 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6549770131792699231, guid: 5e9a9fbc296916f4e9d7dea49068d2bf, type: 3}
-  m_PrefabInstance: {fileID: 1266688098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &618709550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,6 +2291,10 @@ PrefabInstance:
       value: GolgiScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1376144566452752918, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Ranged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376144566452752918, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -2329,6 +2323,10 @@ PrefabInstance:
       value: GolgiScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1537228704490889451, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537228704490889451, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -2355,6 +2353,10 @@ PrefabInstance:
     - target: {fileID: 3120468131621831477, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GolgiScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120468131621831477, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 3120468131621831477, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2460,6 +2462,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: TempPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4807957416860021807, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
+      propertyPath: m_text
+      value: Golgi Apparatus
+      objectReference: {fileID: 0}
     - target: {fileID: 5450812143959882001, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2483,6 +2489,10 @@ PrefabInstance:
     - target: {fileID: 5450812143959882001, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GolgiScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450812143959882001, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 5450812143959882001, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2513,6 +2523,10 @@ PrefabInstance:
       value: GolgiScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6748081579806762342, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748081579806762342, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -2539,6 +2553,10 @@ PrefabInstance:
     - target: {fileID: 7544048999624031451, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GolgiScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544048999624031451, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Ranged
       objectReference: {fileID: 0}
     - target: {fileID: 7544048999624031451, guid: 743decc04ec1fab44b118ff889aad634, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3030,6 +3048,11 @@ MonoBehaviour:
   OutlinePrefab: {fileID: 6094699006318328144, guid: 113f7d09ff52c1c44b2abbfafa4c6e57, type: 3}
   viewCam: {fileID: 963194227}
   Selector: {fileID: 1109391259}
+  atp: 0
+  protein: 0
+  population: 0
+  timer: 0
+  atpText: {fileID: 2028756605}
 --- !u!4 &1330923039
 Transform:
   m_ObjectHideFlags: 0
@@ -4432,6 +4455,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979904635}
   m_CullTransparentMesh: 1
+--- !u!114 &2028756605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8224733590700139491, guid: d39dbcb8651038742b0941250689070b, type: 3}
+  m_PrefabInstance: {fileID: 1452208548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2055911801
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,7 +4746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2423092446682232874, guid: 55b42d9e9acec4540a817f8d49720f4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.97
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 2423092446682232874, guid: 55b42d9e9acec4540a817f8d49720f4a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4720,7 +4754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2423092446682232874, guid: 55b42d9e9acec4540a817f8d49720f4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -39.08
+      value: -36.15
       objectReference: {fileID: 0}
     - target: {fileID: 2423092446682232874, guid: 55b42d9e9acec4540a817f8d49720f4a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4753,7 +4787,11 @@ PrefabInstance:
     - target: {fileID: 2979021886754532833, guid: 55b42d9e9acec4540a817f8d49720f4a, type: 3}
       propertyPath: Panel
       value: 
-      objectReference: {fileID: 103223210}
+      objectReference: {fileID: 343119850}
+    - target: {fileID: 2979021886754532833, guid: 55b42d9e9acec4540a817f8d49720f4a, type: 3}
+      propertyPath: ranged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2979021886754532833, guid: 55b42d9e9acec4540a817f8d49720f4a, type: 3}
       propertyPath: Nucleus
       value: 
@@ -4776,13 +4814,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5283480091601256783, guid: c4734a64703bacc418f234ea00e95673, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5283480091601256783, guid: c4734a64703bacc418f234ea00e95673, type: 3}
       propertyPath: Nucleus
       value: 
       objectReference: {fileID: 1619357750}
+    - target: {fileID: 5283480091601256783, guid: c4734a64703bacc418f234ea00e95673, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7060867048065498896, guid: c4734a64703bacc418f234ea00e95673, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.46
@@ -4960,7 +4998,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4303292503162007881, guid: 3d32fef96b5100244b5233a4fd970d73, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -2.37
       objectReference: {fileID: 0}
     - target: {fileID: 4303292503162007881, guid: 3d32fef96b5100244b5233a4fd970d73, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4968,7 +5006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303292503162007881, guid: 3d32fef96b5100244b5233a4fd970d73, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -39
+      value: -40.76
       objectReference: {fileID: 0}
     - target: {fileID: 4303292503162007881, guid: 3d32fef96b5100244b5233a4fd970d73, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5005,7 +5043,7 @@ PrefabInstance:
     - target: {fileID: 7805802690575410186, guid: 3d32fef96b5100244b5233a4fd970d73, type: 3}
       propertyPath: Panel
       value: 
-      objectReference: {fileID: 597505574}
+      objectReference: {fileID: 1772076360}
     - target: {fileID: 7805802690575410186, guid: 3d32fef96b5100244b5233a4fd970d73, type: 3}
       propertyPath: ProteinText.Array.data[0]
       value: 

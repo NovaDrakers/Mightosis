@@ -175,6 +175,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b8f2af25dfd2a4397a0186e10bcf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  healthBar: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
+  Nucleus: {fileID: 0}
+  wait: 0.1
+  protein: 0
+  maxHealth: 100
+  currentHealth: 0
+  attack: 0
+  health: 0
+  defense: 0
+  range: 0
 --- !u!1 &8719338691849212251
 GameObject:
   m_ObjectHideFlags: 0

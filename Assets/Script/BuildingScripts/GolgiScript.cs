@@ -20,13 +20,13 @@ public class GolgiScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     public void CreateTroop(string troop)
@@ -57,7 +57,7 @@ public class GolgiScript : MonoBehaviour
                     break;
             }
         }
-        Debug.Log("" + ranged +", " + melee + ", " + tank);
+        Debug.Log("" + ranged + ", " + melee + ", " + tank);
     }
 
     public float spawnDistance = 1f;
@@ -72,13 +72,17 @@ public class GolgiScript : MonoBehaviour
         float xOffset = spawnDistance * Mathf.Cos(randomAngle);
         float zOffset = spawnDistance * Mathf.Sin(randomAngle);
 
+
         switch (troop)
         {
             case "Ranged":
 
                 if (ranged > 0)
                 {
-                    Instantiate(Ranged, new Vector3(transform.position.x + xOffset, 0f, transform.position.z + zOffset), transform.rotation);
+                    
+                    Instantiate(Ranged, new Vector3(transform.position.x + xOffset, transform.position.y, transform.position.z + zOffset), transform.rotation);
+                   
+
                     ranged--;
                 }
                 break;
@@ -87,7 +91,8 @@ public class GolgiScript : MonoBehaviour
 
                 if (melee > 0)
                 {
-                    Instantiate(Melee, new Vector3(transform.position.x + xOffset, 0f, transform.position.z + zOffset), transform.rotation);
+                    Instantiate(Melee, new Vector3(transform.position.x + xOffset, transform.position.y, transform.position.z + zOffset), transform.rotation);
+                    
                     melee--;
                 }
                 break;
@@ -96,7 +101,8 @@ public class GolgiScript : MonoBehaviour
 
                 if (tank > 0)
                 {
-                    Instantiate(Tank, new Vector3(transform.position.x + xOffset, 0f, transform.position.z + zOffset), transform.rotation);
+                    Instantiate(Tank, new Vector3(transform.position.x + xOffset, transform.position.y, transform.position.z + zOffset), transform.rotation);
+                    
                     tank--;
                 }
                 break;
@@ -114,5 +120,5 @@ public class GolgiScript : MonoBehaviour
         GetComponent<ClickHandler>().LeftClicked(Panel);
     }
 
-    
+
 }
