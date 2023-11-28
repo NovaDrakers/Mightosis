@@ -217,6 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b1b7b0642f8204ea75a0bbfe27cc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  healthBar: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
+  Nucleus: {fileID: 0}
+  wait: 0.1
+  protein: 0
 --- !u!114 &5283480091601256783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,12 +234,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aceba9721f1f249429b759e93879d07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
+  healthBar: {fileID: 0}
   Nucleus: {fileID: 0}
   wait: 0.1
-  ToTarget: 0
-  arrived: 0
   protein: 0
 --- !u!195 &9052726416231138029
 NavMeshAgent:

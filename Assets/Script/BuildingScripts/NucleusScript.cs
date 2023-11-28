@@ -52,7 +52,10 @@ public class NucleusScript : MonoBehaviour
             float randomAngle = Random.Range(1f, 2f * Mathf.PI);
             float xOffset = spawnDistance * Mathf.Cos(randomAngle);
             float zOffset = spawnDistance * Mathf.Sin(randomAngle);
+            Debug.Log(transform.position);
             Instantiate(Builder, new Vector3(transform.position.x + xOffset, 0f, transform.position.z + zOffset), transform.rotation);
+            
+            
             protein -=  100;
             Debug.Log("builder instantiated");
         }

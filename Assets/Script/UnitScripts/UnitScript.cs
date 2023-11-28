@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.HID;
+using static UnityEngine.EventSystems.EventTrigger;
+using UnityEngine.UI;
 
 public class UnitScript : MonoBehaviour
 {
     public GameObject target;
-
+    public GameObject healthBar;
+    //public HealthScript healthScript;
     /********CHANGED LINE 37 BELOW TO FIND NUCLEUS OBJECT BY TAG BC INSTANTIATED NEW BUILDERS HAVE NO NUCLEUS TO TARGET**********/
     public GameObject Nucleus;
+
+
+
+    
 
     public float wait = 0.1f;
 
@@ -17,9 +24,20 @@ public class UnitScript : MonoBehaviour
 
     float range = 1f;
 
+    public int maxHealth = 100;
+    public int currentHealth;
     void Start()
     {
         protein = 0;
+        currentHealth = maxHealth;
+        
+
+        healthBar = Instantiate(healthBar, this.transform);
+        healthBar.transform.localPosition = new Vector3(-.05f, 0f, -0.3f);
+        healthBar.transform.localRotation = Quaternion.Euler(90, 0, 0);
+
+        healthBar.GetComponentInChildren<Slider>().value = maxHealth;
+
 
         //              || || ||
         //#######       \/ \/ \/    #######
@@ -31,7 +49,11 @@ public class UnitScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //##### UNCOMMENT THIS TO TEST THE HEALTHBAR ##### //
+        /*if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }*/
     }
 
     private void Reset()
@@ -112,5 +134,13 @@ public class UnitScript : MonoBehaviour
         protein -= protein;
 
         StartCoroutine(Farmprotein());
+    }
+
+    //#### NEW FUNCTION
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        healthBar.GetComponentInChildren<Slider>().value = currentHealth;
     }
 }
