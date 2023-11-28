@@ -101,21 +101,7 @@ public class PlayerManagerScript : MonoBehaviour
             {
                 foreach (GameObject i in selecteds)
                 {
-                    if (hit.collider.gameObject.GetComponent<ProteinMoundScript>() != null)
-                    {
-                        i.GetComponent<BuilderScript>().target = hit.collider.gameObject;
-                        if (!i.GetComponent<BuilderScript>().arrived) i.GetComponent<NavMeshAgent>().isStopped = false;
-                    } else
-                    {
-                        i.GetComponent<BuilderScript>().destination = hit.point;
-                        if (!i.GetComponent<BuilderScript>().arrived)
-                        {
-                            i.GetComponent<BuilderScript>().target = null;
-                            i.GetComponent<NavMeshAgent>().isStopped = false;
-                        }   
-                    }
-
-                    
+                    i.GetComponent<UnitScript>().newTarget(hit);
                 }
             }
         }
