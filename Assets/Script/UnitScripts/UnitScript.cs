@@ -15,7 +15,7 @@ public class UnitScript : MonoBehaviour
     /********CHANGED LINE 37 BELOW TO FIND NUCLEUS OBJECT BY TAG BC INSTANTIATED NEW BUILDERS HAVE NO NUCLEUS TO TARGET**********/
     public GameObject Nucleus;
 
-
+    public Animator animator;
 
     
 
@@ -34,6 +34,9 @@ public class UnitScript : MonoBehaviour
         protein = 0;
         currentHealth = maxHealth;
         damage = 10;
+        animator = GetComponentInChildren<Animator>();
+
+
 
         //              || || ||
         //#######       \/ \/ \/    #######
@@ -51,7 +54,13 @@ public class UnitScript : MonoBehaviour
             currentHealth-=25;
         }
 
-        if (currentHealth <= 0) Destroy(this.gameObject);
+        if (currentHealth <= 0)
+        {
+
+            animator.Play("apoptosis");
+            // Invoke a method to destroy the object after the animation is complete
+            //Invoke("DestroyObject", animator.GetCurrentAnimatorStateInfo(0).length);
+        }
     }
 
     private void Reset()
@@ -164,5 +173,10 @@ public class UnitScript : MonoBehaviour
         protein -= protein;
 
         StartCoroutine(Farmprotein());
+    }
+
+    private void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }
