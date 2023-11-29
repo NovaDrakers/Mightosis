@@ -13,14 +13,16 @@ public class NucleusScript : MonoBehaviour
     public GameObject Panel;
 
     public TextMeshProUGUI[] ProteinText;
+    
 
     public GameObject Builder;
+
+    
 
     public float spawnDistance = 1f;
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -36,6 +38,7 @@ public class NucleusScript : MonoBehaviour
         //handling of game lose
         if(health == 0)
         {
+          
             //GameManager.Instance.UpdateGameState(GameState.SceneLose);
         }
 
