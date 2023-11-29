@@ -93,12 +93,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2033832335858463558}
+  - component: {fileID: 7880606181268505431}
   - component: {fileID: 4895937359356986375}
   - component: {fileID: 8871267297709576060}
   - component: {fileID: 4526299557522188054}
   m_Layer: 0
   m_Name: Melee
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +121,26 @@ Transform:
   - {fileID: 137142682347849562}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7880606181268505431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375270764242608574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b1b7b0642f8204ea75a0bbfe27cc9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  healthBarPrefab: {fileID: 0}
+  Nucleus: {fileID: 0}
+  wait: 0.1
+  protein: 0
+  maxHealth: 100
+  currentHealth: 0
+  damage: 0
 --- !u!195 &4895937359356986375
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -176,12 +197,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  healthBar: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
+  healthBarPrefab: {fileID: 0}
   Nucleus: {fileID: 0}
   wait: 0.1
   protein: 0
   maxHealth: 100
   currentHealth: 0
+  damage: 0
 --- !u!1 &6442015914588809472
 GameObject:
   m_ObjectHideFlags: 0

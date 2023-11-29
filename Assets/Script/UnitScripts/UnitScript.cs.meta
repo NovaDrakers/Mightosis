@@ -3,7 +3,10 @@ guid: 50b1b7b0642f8204ea75a0bbfe27cc9d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - target: {instanceID: 0}
+  - healthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
+  - Nucleus: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -14,7 +14,10 @@ public class PlayerManagerScript : MonoBehaviour
 
     List<GameObject> selecteds = new List<GameObject>();
 
+    List<GameObject> healthBars = new List<GameObject>();
+
     public GameObject OutlinePrefab;
+    public GameObject HealthBarPrefab;
 
     Vector3 mousePositionDown;
     Vector3 mousePosition;
@@ -49,8 +52,13 @@ public class PlayerManagerScript : MonoBehaviour
             {
                 Destroy(i);
             }
+            foreach (GameObject i in healthBars)
+            {
+                Destroy(i);
+            }
             outline = new List<GameObject>();
             selecteds = new List<GameObject>();
+            healthBars = new List<GameObject>();
         }
 
         if (Input.GetMouseButton(0) && mousePositionDown != Input.mousePosition)
@@ -77,7 +85,7 @@ public class PlayerManagerScript : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
-                    selecteds.Add(hit.collider.gameObject);
+                    if(hit.collider.gameObject.GetComponent<UnitScript>()!=null || hit.collider.gameObject.GetComponent<BuildingScript>()!=null) selecteds.Add(hit.collider.gameObject);
                 }
             }
             else
@@ -99,7 +107,10 @@ public class PlayerManagerScript : MonoBehaviour
 
             foreach (GameObject i in selecteds)
             {
+                
+                
                 outline.Add(Instantiate(OutlinePrefab, i.transform.position, Quaternion.Euler(90, 0, 0), i.transform));
+                healthBars.Add(Instantiate(HealthBarPrefab, i.transform.position + new Vector3(-.05f, 0f, -0.3f), Quaternion.Euler(90, 0, 0), i.transform));
             }
         }
 

@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class UnitScript : MonoBehaviour
 {
     public GameObject target;
-    public GameObject healthBar;
+    GameObject healthBar;
+    public GameObject healthBarPrefab;
     //public HealthScript healthScript;
     /********CHANGED LINE 37 BELOW TO FIND NUCLEUS OBJECT BY TAG BC INSTANTIATED NEW BUILDERS HAVE NO NUCLEUS TO TARGET**********/
     public GameObject Nucleus;
@@ -26,18 +27,13 @@ public class UnitScript : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
+    public int damage;
+
     void Start()
     {
         protein = 0;
         currentHealth = maxHealth;
-        
-
-        healthBar = Instantiate(healthBar, this.transform);
-        healthBar.transform.localPosition = new Vector3(-.05f, 0f, -0.3f);
-        healthBar.transform.localRotation = Quaternion.Euler(90, 0, 0);
-
-        healthBar.GetComponentInChildren<Slider>().value = maxHealth;
-
+        damage = 10;
 
         //              || || ||
         //#######       \/ \/ \/    #######
@@ -50,10 +46,12 @@ public class UnitScript : MonoBehaviour
     void Update()
     {
         //##### UNCOMMENT THIS TO TEST THE HEALTHBAR ##### //
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(20);
-        }*/
+            currentHealth-=25;
+        }
+
+        if (currentHealth <= 0) Destroy(this.gameObject);
     }
 
     private void Reset()
@@ -74,11 +72,36 @@ public class UnitScript : MonoBehaviour
         } else if (hit.collider.gameObject.GetComponent<NucleusScript>() != null) {
             target = hit.collider.gameObject;
             StartCoroutine(DeliverProtein());
+        } else if (hit.collider.gameObject.GetComponent<UnitScript>() != null) {
+            target = hit.collider.gameObject;
+            StartCoroutine(UnitCombat());
         }
         else
         {
             GetComponent<NavMeshAgent>().destination = hit.point;
             GetComponent<NavMeshAgent>().isStopped = false;
+        }
+    }
+
+    private IEnumerator UnitCombat()
+    {
+        while (1 == 1)
+        {
+            GetComponent<NavMeshAgent>().destination = target.gameObject.transform.position;
+            GetComponent<NavMeshAgent>().isStopped = false;
+
+            while (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + range))
+            {
+                yield return null;
+            }
+
+            GetComponent<NavMeshAgent>().isStopped = true;
+            yield return new WaitForSeconds(1);
+
+            Debug.Log("Attacked");
+            target.GetComponent<UnitScript>().currentHealth -= damage;
+
+            yield return null;
         }
     }
 
@@ -134,13 +157,5 @@ public class UnitScript : MonoBehaviour
         protein -= protein;
 
         StartCoroutine(Farmprotein());
-    }
-
-    //#### NEW FUNCTION
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-
-        healthBar.GetComponentInChildren<Slider>().value = currentHealth;
     }
 }

@@ -177,12 +177,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 993307234888149217}
+  - component: {fileID: 1854934679814031847}
   - component: {fileID: 6117530641461803915}
   - component: {fileID: 1772988623591545424}
   - component: {fileID: 1245714712944780015}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,6 +205,26 @@ Transform:
   - {fileID: 4538685670858092836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1854934679814031847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9020202378083875473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b1b7b0642f8204ea75a0bbfe27cc9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  healthBarPrefab: {fileID: 0}
+  Nucleus: {fileID: 0}
+  wait: 0.1
+  protein: 0
+  maxHealth: 100
+  currentHealth: 0
+  damage: 0
 --- !u!195 &6117530641461803915
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -260,9 +281,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  healthBar: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
+  healthBarPrefab: {fileID: 0}
   Nucleus: {fileID: 0}
   wait: 0.1
   protein: 0
   maxHealth: 100
   currentHealth: 0
+  damage: 0
