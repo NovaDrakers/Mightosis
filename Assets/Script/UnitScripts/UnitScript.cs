@@ -87,21 +87,28 @@ public class UnitScript : MonoBehaviour
     {
         while (1 == 1)
         {
-            GetComponent<NavMeshAgent>().destination = target.gameObject.transform.position;
-            GetComponent<NavMeshAgent>().isStopped = false;
-
-            while (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + range))
+            if (target == null)
             {
+                break;
+            }
+            else
+            {
+                GetComponent<NavMeshAgent>().destination = target.gameObject.transform.position;
+                GetComponent<NavMeshAgent>().isStopped = false;
+
+                while (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + range))
+                {
+                    yield return null;
+                }
+
+                GetComponent<NavMeshAgent>().isStopped = true;
+                yield return new WaitForSeconds(1);
+
+                Debug.Log("Attacked");
+                target.GetComponent<UnitScript>().currentHealth -= damage;
+
                 yield return null;
             }
-
-            GetComponent<NavMeshAgent>().isStopped = true;
-            yield return new WaitForSeconds(1);
-
-            Debug.Log("Attacked");
-            target.GetComponent<UnitScript>().currentHealth -= damage;
-
-            yield return null;
         }
     }
 
