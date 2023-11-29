@@ -8,6 +8,7 @@ public class HealthScript : MonoBehaviour
     Slider slider;
     int maxhealth;
     public Vector3 offset;
+    public Quaternion rotation;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class HealthScript : MonoBehaviour
         slider.maxValue = gameObject.GetComponentInParent<UnitScript>().maxHealth;
 
         offset = new Vector3(-.05f, 0f, -0.33f);
+        rotation = GetComponentInParent<Transform>().rotation;
     }
 
     private void Update()
@@ -22,6 +24,7 @@ public class HealthScript : MonoBehaviour
         slider.value = gameObject.GetComponentInParent<UnitScript>().currentHealth;
 
         transform.localPosition = offset;
+        transform.localRotation = rotation;
     }
     public void SetMaxHealth(int health)
     {
