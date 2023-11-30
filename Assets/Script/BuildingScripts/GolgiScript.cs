@@ -118,6 +118,7 @@ public class GolgiScript : MonoBehaviour
     private void OnMouseDown()
     {
         GetComponent<ClickHandler>().LeftClicked(Panel);
+        Panel.GetComponent<SelectedScript>().Selected = gameObject;
     }
 
 

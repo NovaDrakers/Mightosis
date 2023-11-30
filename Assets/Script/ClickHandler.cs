@@ -20,16 +20,13 @@ public class ClickHandler : MonoBehaviour
     {
         if (!Panel.activeSelf)
         {
-            if (!Panel.activeSelf)
+            GameObject[] TempPanels;
+            TempPanels = GameObject.FindGameObjectsWithTag("TempPanel");
+            foreach (GameObject panel in TempPanels)
             {
-                GameObject[] TempPanels;
-                TempPanels = GameObject.FindGameObjectsWithTag("TempPanel");
-                foreach (GameObject panel in TempPanels)
-                {
-                    panel.SetActive(false);
-                }
-                Panel.SetActive(true);
+                panel.SetActive(false);
             }
+            Panel.SetActive(true);
         }
     }
 }
