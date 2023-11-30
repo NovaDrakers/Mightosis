@@ -125,9 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73a098c237dae64da6671c869cffc05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  protein: 0
+  protein: 1000
   health: 0
-  Panel: {fileID: 0}
+  Panel: {fileID: 6549770131792699231, guid: 5e9a9fbc296916f4e9d7dea49068d2bf, type: 3}
   ProteinText:
   - {fileID: 0}
   - {fileID: 0}

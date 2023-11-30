@@ -32,9 +32,7 @@ public class NucleusScript : MonoBehaviour
         {
             p.text = "Protein = " + protein.ToString();
         }
-        
-    
-        
+
         //handling of game lose
         if(health == 0)
         {
@@ -44,35 +42,13 @@ public class NucleusScript : MonoBehaviour
 
     }
 
-    public void CreateWorker()
-    {
-        if (Builder == null)
-        {
-            Debug.Log("builder prefab not found");
-        }
-        else if (protein >= 100)
-        {
-            float randomAngle = Random.Range(1f, 2f * Mathf.PI);
-            float xOffset = spawnDistance * Mathf.Cos(randomAngle);
-            float zOffset = spawnDistance * Mathf.Sin(randomAngle);
-            Debug.Log(transform.position);
-            Instantiate(Builder, new Vector3(transform.position.x + xOffset, 0f, transform.position.z + zOffset), transform.rotation);
-            
-            
-            protein -=  100;
-            Debug.Log("builder instantiated");
-        }
-
-    }
+    
 
     private void OnMouseDown()
     {
-        GetComponent<ClickHandler>().LeftClicked(Panel);
+        GetComponent<ClickHandler>().LeftClicked(Panel, gameObject);
     }
 
 
-    public void GiveProtein()
-    {
-        protein += 100;
-    }
+    
 }

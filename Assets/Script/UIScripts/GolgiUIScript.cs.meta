@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 344b2f2b3af03af4f835f246082f04ce
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Selected: {instanceID: 0}
+  - Ranged: {fileID: 4325747316064590497, guid: 7b2f07d00b5fe1040be422c17ab2348d, type: 3}
+  - Melee: {fileID: 6375270764242608574, guid: 535a1e8876891864baede0eaf5c152c8, type: 3}
+  - Tank: {fileID: 9020202378083875473, guid: f66a78bd08dab6c4ba0a5d6c9a155249, type: 3}
+  - ProteinText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

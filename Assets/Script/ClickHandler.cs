@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ClickHandler : MonoBehaviour
 {
+    GameObject canvas;
     // Start is called before the first frame update
     void Start()
     {
-        
+        canvas = GameObject.Find("MainUICanvas");
     }
 
     // Update is called once per frame
@@ -16,17 +17,18 @@ public class ClickHandler : MonoBehaviour
         
     }
 
-    public void LeftClicked(GameObject Panel)
+    public void LeftClicked(GameObject Panel, GameObject Object)
     {
-        if (!Panel.activeSelf)
+        GameObject[] TempPanels;
+        TempPanels = GameObject.FindGameObjectsWithTag("TempPanel");
+        foreach (GameObject panel in TempPanels)
         {
-            GameObject[] TempPanels;
-            TempPanels = GameObject.FindGameObjectsWithTag("TempPanel");
-            foreach (GameObject panel in TempPanels)
-            {
-                panel.SetActive(false);
-            }
-            Panel.SetActive(true);
+            Destroy(panel);
         }
+        //Panel.SetActive(true);
+
+        GameObject temp = Instantiate(Panel);
+        temp.transform.SetParent(canvas.transform);
+        temp.GetComponent<UIScript>().Selected = Object;
     }
 }

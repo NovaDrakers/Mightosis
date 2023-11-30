@@ -107,10 +107,12 @@ public class PlayerManagerScript : MonoBehaviour
 
             foreach (GameObject i in selecteds)
             {
-                
-                
                 outline.Add(Instantiate(OutlinePrefab, i.transform.position, Quaternion.Euler(90, 0, 0), i.transform));
-                healthBars.Add(Instantiate(HealthBarPrefab, i.transform.position + new Vector3(-.05f, 0f, -0.3f), Quaternion.Euler(90, 0, 0), i.transform));
+
+                if(i.GetComponent<UnitScript>() != null)
+                {
+                    healthBars.Add(Instantiate(HealthBarPrefab, i.transform.position + new Vector3(-.05f, 0f, -0.3f), Quaternion.Euler(90, 0, 0), i.transform));
+                }
             }
         }
 

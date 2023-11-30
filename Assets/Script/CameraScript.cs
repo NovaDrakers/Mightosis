@@ -20,7 +20,7 @@ public class CameraScript : MonoBehaviour
     {
         //RB.velocity = velocity;
         RB.AddForce(velocity * speed);
-
+        /*
         if (Input.mousePosition.x >= Screen.width *0.95 && Input.mousePosition.x <= Screen.width)
         {
             transform.Translate(new Vector3(1,0,0) * Time.deltaTime * speed, Space.World);
@@ -40,6 +40,7 @@ public class CameraScript : MonoBehaviour
         {
             transform.Translate(new Vector3(0, 0, -1) * Time.deltaTime * speed, Space.World);
         }
+        */
     }
 
     public void Move(InputAction.CallbackContext context)

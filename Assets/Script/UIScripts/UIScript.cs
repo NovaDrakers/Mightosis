@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectedScript : MonoBehaviour
+public class UIScript : MonoBehaviour
 {
     public GameObject Selected;
-    
+    public GameObject[] Selecteds;
+
     // Start is called before the first frame update
     void Start()
     {

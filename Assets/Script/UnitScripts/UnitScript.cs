@@ -21,9 +21,9 @@ public class UnitScript : MonoBehaviour
 
     public float wait = 0.1f;
 
-    public int protein;
+    
 
-    float range = 1f;
+    public float range = 1f;
 
     public int maxHealth = 100;
     public int currentHealth;
@@ -31,7 +31,7 @@ public class UnitScript : MonoBehaviour
 
     void Start()
     {
-        protein = 0;
+        
         currentHealth = maxHealth;
         damage = 10;
         animator = GetComponentInChildren<Animator>();
@@ -68,6 +68,10 @@ public class UnitScript : MonoBehaviour
         target = null;
         GetComponent<NavMeshAgent>().isStopped = true;
         StopAllCoroutines();
+        if (GetComponent<BuilderScript>() != null)
+        {
+            GetComponent<BuilderScript>().StopAllCoroutines();
+        }
     }
 
     public void newTarget(RaycastHit hit)
@@ -77,10 +81,10 @@ public class UnitScript : MonoBehaviour
         if (hit.collider.gameObject.GetComponent<ProteinMoundScript>() != null)
         {
             target = hit.collider.gameObject;
-            StartCoroutine(Farmprotein());
+            StartCoroutine(GetComponent<BuilderScript>().Farmprotein());
         } else if (hit.collider.gameObject.GetComponent<NucleusScript>() != null) {
             target = hit.collider.gameObject;
-            StartCoroutine(DeliverProtein());
+            StartCoroutine(GetComponent<BuilderScript>().DeliverProtein());
         } else if (hit.collider.gameObject.GetComponent<UnitScript>() != null) {
             target = hit.collider.gameObject;
             StartCoroutine(UnitCombat());
@@ -119,64 +123,5 @@ public class UnitScript : MonoBehaviour
                 yield return null;
             }
         }
-    }
-
-    private IEnumerator Farmprotein()
-    {
-        float farmtime = 0.1f;
-
-        GetComponent<NavMeshAgent>().destination = target.gameObject.transform.position;
-        GetComponent<NavMeshAgent>().isStopped = false;
-
-        if (protein < 100)
-        {
-            while (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + range))
-            {
-                yield return null;
-            }
-
-            GetComponent<NavMeshAgent>().isStopped = true;
-
-            while (protein < 100 && target != null)
-            {
-                yield return new WaitForSeconds(farmtime);
-                for (int i = 0; i < 10; i++)
-                {
-                    if (target != null)
-                    {
-                        if (target.GetComponent<ProteinMoundScript>().protein > 0)
-                        {
-                            target.GetComponent<ProteinMoundScript>().protein--;
-                            protein++;
-                        }
-                    }
-                }
-            }
-        }
-        StartCoroutine(DeliverProtein());
-    }
-
-    private IEnumerator DeliverProtein()
-    {
-        GetComponent<NavMeshAgent>().destination = Nucleus.gameObject.transform.position;
-        GetComponent<NavMeshAgent>().isStopped = false;
-
-        while (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + range))
-        {
-            yield return null;
-        }
-
-        GetComponent<NavMeshAgent>().isStopped = true;
-
-        yield return new WaitForSeconds(1);
-        Nucleus.GetComponent<NucleusScript>().protein += protein;
-        protein -= protein;
-
-        StartCoroutine(Farmprotein());
-    }
-
-    private void DestroyObject()
-    {
-        Destroy(gameObject);
     }
 }

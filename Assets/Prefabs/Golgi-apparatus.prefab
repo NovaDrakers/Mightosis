@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2806744045538790986}
   - component: {fileID: 5303650510503945498}
   - component: {fileID: 2292384893947736572}
-  - component: {fileID: 2979021886754532833}
+  - component: {fileID: -331946342103142122}
   m_Layer: 0
   m_Name: Golgi-apparatus
   m_TagString: Golgi
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7088ce6c2c8afe84d9f8d5dbf3f68066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2979021886754532833
+--- !u!114 &-331946342103142122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,13 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad04c6a397f51e7459fc45de6d7a5233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
-  Nucleus: {fileID: 0}
+  PanelPrefab: {fileID: 7854631367554772467, guid: 33733fad69b15b149aab100ec41dfa4c, type: 3}
   ranged: 0
   melee: 0
   tank: 0
-  ProteinText: {fileID: 0}
   spawnDistance: 1
-  Ranged: {fileID: 4325747316064590497, guid: 7b2f07d00b5fe1040be422c17ab2348d, type: 3}
-  Melee: {fileID: 6375270764242608574, guid: 535a1e8876891864baede0eaf5c152c8, type: 3}
-  Tank: {fileID: 9020202378083875473, guid: f66a78bd08dab6c4ba0a5d6c9a155249, type: 3}
