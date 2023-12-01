@@ -124,6 +124,8 @@ public class BuildTutorialManagerScript : MonoBehaviour
         SceneManager.LoadScene("FightingTutorial");
     }
 
+    
+
 }
 
 public enum TutorialState
