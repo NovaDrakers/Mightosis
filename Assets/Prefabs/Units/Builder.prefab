@@ -212,6 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7060867048065498896}
+  - component: {fileID: -8558806529604178030}
   - component: {fileID: 7581049606773480933}
   - component: {fileID: -2925803286843800844}
   - component: {fileID: 9052726416231138029}
@@ -240,6 +241,18 @@ Transform:
   - {fileID: 4316016699071206448}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8558806529604178030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058363111763403497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7088ce6c2c8afe84d9f8d5dbf3f68066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7581049606773480933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +270,7 @@ MonoBehaviour:
   Nucleus: {fileID: 0}
   animator: {fileID: 0}
   wait: 0.1
-  protein: 0
+  range: 1
   maxHealth: 100
   currentHealth: 0
   damage: 0
@@ -273,15 +286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aceba9721f1f249429b759e93879d07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  healthBarPrefab: {fileID: 0}
-  Nucleus: {fileID: 0}
-  animator: {fileID: 0}
-  wait: 0.1
   protein: 0
-  maxHealth: 100
-  currentHealth: 0
-  damage: 0
+  Nucleus: {fileID: 0}
+  Panel: {fileID: 5583148179338481705, guid: 288a6a6a9fbc4a64a85911eb1eb7a91a, type: 3}
 --- !u!195 &9052726416231138029
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -301,7 +308,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.5000001
-  m_BaseOffset: 0.9501
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!135 &884907033104207164

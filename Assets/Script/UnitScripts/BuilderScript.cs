@@ -11,6 +11,7 @@ public class BuilderScript : MonoBehaviour
     float range;
     public int protein;
     public GameObject Nucleus;
+    public GameObject Panel;
 
     private void Start()
     {
@@ -79,5 +80,10 @@ public class BuilderScript : MonoBehaviour
         protein -= protein;
 
         StartCoroutine(Farmprotein());
+    }
+
+    private void OnMouseDown()
+    {
+        GetComponent<ClickHandler>().LeftClicked(Panel, gameObject);
     }
 }

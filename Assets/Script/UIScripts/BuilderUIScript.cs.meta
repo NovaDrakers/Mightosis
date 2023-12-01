@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 01e9f38c79d8ba44fa7803d807d9ce7a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HoverPrefab: {fileID: 5718062199156394512, guid: 85143305b108f6640a824f386a9ad46a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
