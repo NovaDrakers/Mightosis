@@ -30,6 +30,8 @@ public class UnitScript : MonoBehaviour
 
     public int detectionRange;
 
+    public bool mobileHunt = false;
+
     void Start()
     {
         GetComponent<GlobalScript>().isAlive = true;
@@ -61,9 +63,13 @@ public class UnitScript : MonoBehaviour
             // Invoke a method to destroy the object after the animation is complete
             //Invoke("DestroyObject", animator.GetCurrentAnimatorStateInfo(0).length);
         }
-        if (target == null && GetComponent<NavMeshAgent>().isStopped == true)
+        if (target == null)
         {
-            Alert();
+            if (mobileHunt)
+            {
+                GetComponent<NavMeshAgent>().isStopped = false;
+                hunt();
+            } else if (GetComponent<NavMeshAgent>().isStopped == true) Alert();
         }
     }
 
@@ -183,6 +189,11 @@ public class UnitScript : MonoBehaviour
         state = "Hunting";
         Reset();
 
+        hunt();
+    }
+
+    private void hunt()
+    {
         foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
         {
             if (unit.GetComponent<UnitScript>().team != team)
@@ -198,9 +209,9 @@ public class UnitScript : MonoBehaviour
                 {
                     newTarget(target);
                     break;
-                }  
+                }
                 else target = null;
-            }    
+            }
         }
 
         if (target == null)
@@ -218,4 +229,5 @@ public class UnitScript : MonoBehaviour
             }
         }
     }
+
 }

@@ -45,7 +45,7 @@ public class GolgiUIScript : MonoBehaviour
 
     public void CreateTroop(string troop)
     {
-        Nucleus = GameObject.FindGameObjectWithTag("Nucleus");
+        Nucleus = GameObject.Find("Nucleus");
         if (Nucleus.GetComponent<NucleusScript>().protein >= 100)
         {
             Nucleus.GetComponent<NucleusScript>().protein -= 100;

@@ -49,5 +49,10 @@ public class MainEnemyScript : MonoBehaviour
         float zOffset = 1 * Mathf.Sin(randomAngle);
 
         GameObject temp = Instantiate(prefab, new Vector3(transform.position.x + xOffset, 0f, transform.position.z + zOffset), transform.rotation);
+
+        temp.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = GameObject.Find("Nucleus").transform.position;
+        temp.GetComponent<UnityEngine.AI.NavMeshAgent>().isStopped = false;
+
+        
     }
 }

@@ -88,7 +88,7 @@ public class PlayerManagerScript : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if(hit.collider.gameObject.GetComponent<UnitScript>()!=null || hit.collider.gameObject.GetComponent<BuildingScript>()!=null) selecteds.Add(hit.collider.gameObject);
+                    if(hit.collider.gameObject.GetComponent<GlobalScript>()!=null && hit.collider.gameObject.GetComponent<GlobalScript>().team == 0) selecteds.Add(hit.collider.gameObject);
                 }
             }
             else

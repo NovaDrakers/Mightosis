@@ -179,6 +179,7 @@ MonoBehaviour:
   maxHealth: 100
   damage: 0
   detectionRange: 0
+  mobileHunt: 1
 --- !u!195 &7381220199088663550
 NavMeshAgent:
   m_ObjectHideFlags: 0
