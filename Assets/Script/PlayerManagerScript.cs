@@ -101,7 +101,7 @@ public class PlayerManagerScript : MonoBehaviour
 
                     Vector3 screenPos = viewCam.WorldToScreenPoint(i.transform.position);
 
-                    if(screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y)
+                    if(screenPos.x > min.x && screenPos.x < max.x && screenPos.y > min.y && screenPos.y < max.y && i.GetComponent<UnitScript>().team == 0)
                     {
                         selecteds.Add(i);
                     }

@@ -13,6 +13,8 @@ public class BuilderScript : MonoBehaviour
     public GameObject Nucleus;
     public GameObject Panel;
 
+    public int team;
+
     private void Start()
     {
         protein = 0;
@@ -21,7 +23,7 @@ public class BuilderScript : MonoBehaviour
     private void Update()
     {
         range = GetComponent<UnitScript>().range;
-        Nucleus = GetComponent<UnitScript>().Nucleus;
+        Nucleus = GameObject.Find("Nucleus");
     }
 
     public IEnumerator Farmprotein()
