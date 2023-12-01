@@ -134,7 +134,10 @@ public class PlayerManagerScript : MonoBehaviour
 
         //Player UI --------------------------------------------------------------------------------------------
         atpText.text = "ATP: " + atp.ToString();
-        proteinText.text = "Protein: " + protein.ToString();
+
+        GameObject nucleus = GameObject.Find("Nucleus");
+
+        proteinText.text = "Protein: " + nucleus.GetComponent<NucleusScript>().protein.ToString();
         populationText.text = "Population: " + population.ToString();
         timerText.text = Time.timeSinceLevelLoad.ToString();
         //-------------------------------------------------------------------------------------------------------

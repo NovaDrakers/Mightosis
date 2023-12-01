@@ -18,6 +18,7 @@ public class BuildTutorialButtons : MonoBehaviour
     private void Start()
     {
         StartCoroutine(checkForBuilder());
+        StartCoroutine(checkForVacuole());
     }
 
     public void closeInitialStart()
@@ -67,7 +68,7 @@ public class BuildTutorialButtons : MonoBehaviour
         while(builderCreated == false)
         {
 
-            if(GameObject.Find("Builder") != null)
+            if(GameObject.Find("Builder(Clone)") != null)
             {
                 builderCreated = true;
             }
@@ -79,12 +80,12 @@ public class BuildTutorialButtons : MonoBehaviour
 
     public void closeUnitSelectionInformation()
     {
-        if(GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().protein < 300)
+        if(GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein < 300)
         {
             unitSelectionInfromation.SetActive(false);
             unitSelectionInfromation.SetActive(true);
         }
-        else if(GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().protein >= 300)
+        else if(GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein >= 300)
         {
             unitSelectionInfromation.SetActive(false);
             GameObject.Find("BuildTutorialManager").GetComponent<BuildTutorialManagerScript>().UpdateTutorialState(TutorialState.BuildBuilding);
@@ -123,7 +124,7 @@ public class BuildTutorialButtons : MonoBehaviour
         while (vacuoleCreated == false)
         {
 
-            if (GameObject.Find("Endoplasmic-Reticulum") != null)
+            if (GameObject.Find("Endoplasmic-Reticulum(Clone)") != null)
             {
                 vacuoleCreated = true;
             }
@@ -135,7 +136,7 @@ public class BuildTutorialButtons : MonoBehaviour
 
     public void closeTutorialEndInformation()
     {
-        GameObject.Find("BuildTutorialManager").GetComponent<BuildTutorialManagerScript>().UpdateTutorialState(TutorialState.TutorialEnd);
+        GameObject.Find("BuildTutorialManager").GetComponent<BuildTutorialManagerScript>().UpdateTutorialState(TutorialState.SceneMove);
     }
 
 

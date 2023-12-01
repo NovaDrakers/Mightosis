@@ -69,6 +69,9 @@ public class BuildTutorialManagerScript : MonoBehaviour
             case TutorialState.TutorialEnd:
                 HandleTutorialEnd();
                 break;
+            case TutorialState.SceneMove:
+                SceneMove();
+                break;
         }
 
         OnTutorialStateChange?.Invoke(newState);

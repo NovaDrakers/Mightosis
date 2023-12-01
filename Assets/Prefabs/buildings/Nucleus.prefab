@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e703212c8859524a88e9976379b8d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 0
 --- !u!212 &736442945795725985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   protein: 1000
   health: 0
-  Panel: {fileID: 6549770131792699231, guid: 5e9a9fbc296916f4e9d7dea49068d2bf, type: 3}
+  Panel: {fileID: 4291285659049411969, guid: 2e8dac2893dd1064da8eea14c10f9961, type: 3}
   ProteinText:
   - {fileID: 0}
   - {fileID: 0}

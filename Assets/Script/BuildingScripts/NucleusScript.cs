@@ -11,8 +11,6 @@ public class NucleusScript : MonoBehaviour
     public int protein;
     public int health;
     public GameObject Panel;
-
-    public TextMeshProUGUI[] ProteinText;
     
 
     public GameObject Builder;
@@ -28,11 +26,6 @@ public class NucleusScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (var p in ProteinText)
-        {
-            p.text = "Protein = " + protein.ToString();
-        }
-
         //handling of game lose
         if(health == 0)
         {
