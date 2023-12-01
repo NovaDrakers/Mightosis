@@ -25,7 +25,6 @@ public class ClickHandler : MonoBehaviour
         {
             Destroy(panel);
         }
-        //Panel.SetActive(true);
 
         GameObject temp = Instantiate(Panel);
         temp.transform.SetParent(canvas.transform);
