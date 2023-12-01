@@ -137,6 +137,7 @@ public class PlayerManagerScript : MonoBehaviour
         proteinText.text = "Protein: " + protein.ToString();
         populationText.text = "Population: " + population.ToString();
         timerText.text = Time.timeSinceLevelLoad.ToString();
+        //-------------------------------------------------------------------------------------------------------
     }
 }
 
