@@ -38,7 +38,7 @@ public class UnitScript : MonoBehaviour
 
         if (target == null) GetComponent<NavMeshAgent>().isStopped = true;
 
-        
+        StartCoroutine(Alert());
     }
 
     // Update is called once per frame
@@ -57,8 +57,6 @@ public class UnitScript : MonoBehaviour
             // Invoke a method to destroy the object after the animation is complete
             //Invoke("DestroyObject", animator.GetCurrentAnimatorStateInfo(0).length);
         }
-
-        if(target == null) StartCoroutine(Alert());
     }
 
     private void Reset()
@@ -87,16 +85,38 @@ public class UnitScript : MonoBehaviour
             StartCoroutine(GetComponent<BuilderScript>().DeliverProtein());
         } else if (hit.collider.gameObject.GetComponent<UnitScript>() != null) {
             target = hit.collider.gameObject;
-            
             StartCoroutine(UnitCombat());
         }
         else
         {
             GetComponent<NavMeshAgent>().destination = hit.point;
             GetComponent<NavMeshAgent>().isStopped = false;
-            
             StartCoroutine(Alert());
         }
+    }
+
+    public void newTarget(GameObject hit)
+    {
+        Reset();
+
+        if (hit.GetComponent<ProteinMoundScript>() != null)
+        {
+            target = hit;
+            state = "Farmign Protein";
+            StartCoroutine(GetComponent<BuilderScript>().Farmprotein());
+        }
+        else if (hit.GetComponent<NucleusScript>() != null)
+        {
+            target = hit;
+            state = "Delivering Protein";
+            StartCoroutine(GetComponent<BuilderScript>().DeliverProtein());
+        }
+        else if (hit.GetComponent<UnitScript>() != null)
+        {
+            target = hit;
+            StartCoroutine(UnitCombat());
+        }
+        else Debug.Log("Please add handler for " + hit.name);
     }
 
     private IEnumerator UnitCombat()
@@ -120,7 +140,7 @@ public class UnitScript : MonoBehaviour
                 Debug.Log(name + " Attacked " + target.name);
                 target.GetComponent<UnitScript>().currentHealth -= damage;
 
-                StartCoroutine(Alert());
+                newTarget(target);
             }
         }
     }
@@ -133,52 +153,17 @@ public class UnitScript : MonoBehaviour
 
             foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
             {
-                if (Vector3.Distance(transform.position, unit.transform.position) <=5)
+                if (unit.GetComponent<UnitScript>().team != team)
                 {
-                    target = unit;
-                }
-            }
-            
-
-            RaycastHit[] hit = Physics.SphereCastAll(transform.position, 5, new Vector3(0, 1, 0), 1);
-
-            
-            foreach(RaycastHit ray in hit)
-            {
-                GameObject temp = ray.collider.gameObject;
-
-                if (temp.GetComponent<UnitScript>() != null)
-                {
-                    if (temp.GetComponent<UnitScript>().team != team)
+                    if (Vector3.Distance(transform.position, unit.transform.position) <= 5)
                     {
-                        target = temp;
+                        target = unit;
                     }
                 }
                 if (target != null) break;
             }
 
-            /*
-            if (target == null)
-            {
-                foreach (RaycastHit ray in hit)
-                {
-                    GameObject temp = ray.collider.gameObject;
-
-                    if (temp.GetComponent<BuildingScript>() != null)
-                    {
-                        if (temp.GetComponent<BuildingScript>().team != team)
-                        {
-                            target = temp;
-                        }
-                    }
-                    if (target != null) break;
-                }
-            }
-            */
-
-            //else Debug.Log("Har har Har");
-
-            if (target != null) StartCoroutine(UnitCombat());
+            if (target != null) newTarget(target);
             yield return null;
         }
     }
