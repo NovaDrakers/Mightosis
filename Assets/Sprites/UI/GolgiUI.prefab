@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Selected: {fileID: 0}
+  Selecteds: []
 --- !u!114 &8588414830688884584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +285,7 @@ MonoBehaviour:
   Ranged: {fileID: 4325747316064590497, guid: 7b2f07d00b5fe1040be422c17ab2348d, type: 3}
   Melee: {fileID: 6375270764242608574, guid: 535a1e8876891864baede0eaf5c152c8, type: 3}
   Tank: {fileID: 9020202378083875473, guid: f66a78bd08dab6c4ba0a5d6c9a155249, type: 3}
+  UpgradeTreeUI: {fileID: 6925357454431855912, guid: edd0a49289ae8254cacefac5f09ceb58, type: 3}
   ProteinText: {fileID: 0}
 --- !u!1 &8798414449827458668
 GameObject:
