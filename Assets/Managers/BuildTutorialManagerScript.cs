@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BuildTutorialManagerScript : MonoBehaviour
 {
@@ -10,24 +11,38 @@ public class BuildTutorialManagerScript : MonoBehaviour
     public GameObject nucleus;
     public GameObject proteinMound;
 
+    public GameObject initialStartInformation;
+    public GameObject nucleusInformation;
+    public GameObject proteinMoundInformation;
+    public GameObject builderInformation;
+    public GameObject unitSelectionInformation;
+    public GameObject buildBuildingInformation;
+    public GameObject tutorialEndInformation;
+
+    public BuildTutorialManagerScript instance;
     public TutorialState state;
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance.UpdateTutorialState(TutorialState.TutorialStart);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public static event Action<TutorialState> OnTutorialStateChange;
 
-    public void TutorialStateChange(TutorialState newState)
+    public void UpdateTutorialState(TutorialState newState)
     {
         state = newState;
 
@@ -48,6 +63,9 @@ public class BuildTutorialManagerScript : MonoBehaviour
             case TutorialState.UnitMovementandSelection:
                 HandleUnitMovementandSelection();
                 break;
+            case TutorialState.BuildBuilding:
+                HandleBuildBuilding();
+                break;
             case TutorialState.TutorialEnd:
                 HandleTutorialEnd();
                 break;
@@ -59,32 +77,48 @@ public class BuildTutorialManagerScript : MonoBehaviour
 
     private void HandleTutorialStart()
     {
-
+        initialStartInformation.SetActive(true);
     }
+
 
     private void HandleNucleusInfo()
     {
 
+        mainCamera.GetComponent<Rigidbody>().position = new Vector3(3f, 6f, -11.5f);
+        nucleusInformation.SetActive(true);
     }
 
     private void HandleProteinInfo()
     {
-
+        mainCamera.GetComponent<Rigidbody>().position = new Vector3(proteinMound.transform.position.x + 2f, 6f, proteinMound.transform.position.z);
+        proteinMoundInformation.SetActive(true);
     }
 
     private void HandleBuildBuilder()
     {
-
+        mainCamera.GetComponent<Rigidbody>().position = new Vector3(-4,10,-11);
+        builderInformation.SetActive(true);
+        GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().protein += 100;
     }
     
     private void HandleUnitMovementandSelection()
     {
+        unitSelectionInformation.SetActive(true);
+    }
 
+    private void HandleBuildBuilding()
+    {
+        buildBuildingInformation.SetActive(true);
     }
 
     private void HandleTutorialEnd()
     {
+        tutorialEndInformation.SetActive(true);
+    }
 
+    private void SceneMove()
+    {
+        SceneManager.LoadScene("FightingTutorial");
     }
 
 }
@@ -101,6 +135,10 @@ public enum TutorialState
     BuildBuilder,
     //Telling you how to make a builder move and how to get it to start collecting protein
     UnitMovementandSelection,
-    //Ends the tutorial
+    //Telling you to build a vacuole
+    BuildBuilding,
+    //prompts to end the tutorial
     TutorialEnd,
+    //moves to the nexts scene
+    SceneMove,
 }
