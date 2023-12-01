@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4186422866015433389}
   - component: {fileID: 5959425945188454619}
   - component: {fileID: 5986814211052656219}
+  - component: {fileID: -7982474681022033705}
   m_Layer: 0
   m_Name: Protein
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e703212c8859524a88e9976379b8d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 0
+  team: 0
+  currentHealth: 0
 --- !u!212 &1790544208115839557
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -150,3 +154,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5000001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7982474681022033705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267515678369932699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55f1b81db8e6ef4b898c15363dbf55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  health: 0
+  isAlive: 0
+  HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}

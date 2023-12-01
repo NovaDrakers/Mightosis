@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedScript : UnitScript
+public class RangedScript : MonoBehaviour
 {
 
     // Start is called before the first frame update

@@ -7,7 +7,7 @@ public class CameraScript : MonoBehaviour
 {
     Rigidbody RB;
     Vector3 velocity;
-    public int speed = 25;
+    public int speed = 1;
     
     // Start is called before the first frame update
     void Start()

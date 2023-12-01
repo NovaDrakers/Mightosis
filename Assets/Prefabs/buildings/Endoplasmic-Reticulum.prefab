@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 1078900140745368969}
   - component: {fileID: 4727899381436881595}
   - component: {fileID: 6540909403877052366}
+  - component: {fileID: 1592443841261778073}
+  - component: {fileID: 4035604405884585029}
   m_Layer: 0
   m_Name: Endoplasmic-Reticulum
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 1000
+  team: 0
+  currentHealth: 0
 --- !u!135 &3767265439417745841
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -150,3 +154,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6989bc5aa5b586c4c9e1b9cb2975fde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1592443841261778073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503012227421395695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55f1b81db8e6ef4b898c15363dbf55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  health: 0
+  isAlive: 0
+  HealthBarPrefab: {fileID: 0}
+--- !u!114 &4035604405884585029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503012227421395695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55f1b81db8e6ef4b898c15363dbf55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  health: 0
+  isAlive: 0
+  HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
