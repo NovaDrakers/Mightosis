@@ -33,6 +33,9 @@ public class PlayerManagerScript : MonoBehaviour
     public int timer;
 
     public TextMeshProUGUI atpText;
+    public TextMeshProUGUI proteinText;
+    public TextMeshProUGUI populationText;
+    public TextMeshProUGUI timerText;
     // --------------------------------------------------
 
     // Start is called before the first frame update
@@ -131,6 +134,9 @@ public class PlayerManagerScript : MonoBehaviour
 
         //Player UI --------------------------------------------------------------------------------------------
         atpText.text = "ATP: " + atp.ToString();
+        proteinText.text = "Protein: " + protein.ToString();
+        populationText.text = "Population: " + population.ToString();
+        timerText.text = Time.timeSinceLevelLoad.ToString();
     }
 }
 

@@ -7,6 +7,9 @@ TagManager:
   - TempPanel
   - Nucleus
   - Golgi
+  - Unit
+  - Outline
+  - BuilderReminder
   layers:
   - Default
   - TransparentFX
