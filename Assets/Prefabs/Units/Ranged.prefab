@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 2238312392126558227}
   - component: {fileID: 278028548273195604}
   - component: {fileID: 5050908155003043980}
+  - component: {fileID: 5115246231593262926}
   m_Layer: 0
   m_Name: Ranged
   m_TagString: Unit
@@ -170,13 +171,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   healthBarPrefab: {fileID: 0}
-  Nucleus: {fileID: 0}
   animator: {fileID: 0}
+  team: 0
   wait: 0.1
+  state: 
   range: 1
   maxHealth: 100
-  currentHealth: 0
   damage: 0
+  detectionRange: 0
 --- !u!195 &2238312392126558227
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -196,7 +198,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!135 &278028548273195604
@@ -232,15 +234,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b8f2af25dfd2a4397a0186e10bcf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  healthBarPrefab: {fileID: 0}
-  Nucleus: {fileID: 0}
-  animator: {fileID: 0}
-  wait: 0.1
-  range: 1
-  maxHealth: 100
-  currentHealth: 0
-  damage: 0
+--- !u!114 &5115246231593262926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325747316064590497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55f1b81db8e6ef4b898c15363dbf55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  health: 0
+  maxHealth: 0
+  isAlive: 0
+  type: 
+  HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
 --- !u!1 &8719338691849212251
 GameObject:
   m_ObjectHideFlags: 0

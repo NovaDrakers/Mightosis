@@ -26,36 +26,44 @@ public class UnitScript : MonoBehaviour
     public float range = 1f;
 
     public int maxHealth = 100;
-    public int currentHealth;
     public int damage;
+
+    public int detectionRange;
 
     void Start()
     {
-        
-        currentHealth = maxHealth;
+        GetComponent<GlobalScript>().isAlive = true;
+        GetComponent<GlobalScript>().team = team;
+
+        GetComponent<GlobalScript>().maxHealth = maxHealth;
+        GetComponent<GlobalScript>().type = "unit";
         damage = 10;
         animator = GetComponentInChildren<Animator>();
 
-        if (target == null) GetComponent<NavMeshAgent>().isStopped = true;
+        detectionRange = 5;
 
-        StartCoroutine(Alert());
+        if (target == null) GetComponent<NavMeshAgent>().isStopped = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         //##### UNCOMMENT THIS TO TEST THE HEALTHBAR ##### //
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            currentHealth-=25;
+            GetComponent<GlobalScript>().health -= 25;
         }
 
-        if (currentHealth <= 0)
+        if (GetComponent<GlobalScript>().health <= 0)
         {
-
             animator.Play("apoptosis");
             // Invoke a method to destroy the object after the animation is complete
             //Invoke("DestroyObject", animator.GetCurrentAnimatorStateInfo(0).length);
+        }
+        if (target == null && GetComponent<NavMeshAgent>().isStopped == true)
+        {
+            Alert();
         }
     }
 
@@ -73,98 +81,141 @@ public class UnitScript : MonoBehaviour
     public void newTarget(RaycastHit hit)
     {
         Reset();
-
-        if (hit.collider.gameObject.GetComponent<ProteinMoundScript>() != null)
+        
+        if (hit.collider.gameObject.name != "Map")
         {
             target = hit.collider.gameObject;
-            state = "Farmign Protein";
-            StartCoroutine(GetComponent<BuilderScript>().Farmprotein());
-        } else if (hit.collider.gameObject.GetComponent<NucleusScript>() != null) {
-            target = hit.collider.gameObject;
-            state = "Delivering Protein";
-            StartCoroutine(GetComponent<BuilderScript>().DeliverProtein());
-        } else if (hit.collider.gameObject.GetComponent<UnitScript>() != null) {
-            target = hit.collider.gameObject;
-            StartCoroutine(UnitCombat());
-        }
+
+            if (target.GetComponent<GlobalScript>().team == team)
+            {
+                if (hit.collider.gameObject.GetComponent<ProteinMoundScript>() != null)
+                {
+                    state = "Farmign Protein";
+                    StartCoroutine(GetComponent<BuilderScript>().Farmprotein());
+                }
+                else if (hit.collider.gameObject.GetComponent<NucleusScript>() != null)
+                {
+                    state = "Delivering Protein";
+                    StartCoroutine(GetComponent<BuilderScript>().DeliverProtein());
+                }
+            }
+            else
+            {
+                StartCoroutine(UnitCombat());
+            }
+        } 
         else
         {
-            GetComponent<NavMeshAgent>().destination = hit.point;
-            GetComponent<NavMeshAgent>().isStopped = false;
-            StartCoroutine(Alert());
+            StartCoroutine(walk(hit));
         }
+    }
+
+    public IEnumerator walk(RaycastHit hit)
+    {
+        GetComponent<NavMeshAgent>().destination = hit.point;
+        GetComponent<NavMeshAgent>().isStopped = false;
+
+        while (Mathf.Abs(Vector3.Distance(transform.position, GetComponent<NavMeshAgent>().destination)) >= (1.6))
+        {
+            //Debug.Log(NavMeshPathStatus.PathPartial + " should be equal 1?");
+            yield return null;
+        }
+        Alert();
     }
 
     public void newTarget(GameObject hit)
     {
         Reset();
+        target = hit;
 
-        if (hit.GetComponent<ProteinMoundScript>() != null)
+        if (target.GetComponent<GlobalScript>().team == team)
         {
-            target = hit;
-            state = "Farmign Protein";
-            StartCoroutine(GetComponent<BuilderScript>().Farmprotein());
+            if (hit.GetComponent<ProteinMoundScript>() != null)
+            {
+                target = hit;
+                state = "Farmign Protein";
+                StartCoroutine(GetComponent<BuilderScript>().Farmprotein());
+            }
+            else if (hit.GetComponent<NucleusScript>() != null)
+            {
+                target = hit;
+                state = "Delivering Protein";
+                StartCoroutine(GetComponent<BuilderScript>().DeliverProtein());
+            }
         }
-        else if (hit.GetComponent<NucleusScript>() != null)
-        {
-            target = hit;
-            state = "Delivering Protein";
-            StartCoroutine(GetComponent<BuilderScript>().DeliverProtein());
-        }
-        else if (hit.GetComponent<UnitScript>() != null)
+        else
         {
             target = hit;
             StartCoroutine(UnitCombat());
         }
-        else Debug.Log("Please add handler for " + hit.name);
     }
 
     private IEnumerator UnitCombat()
     {
         state = "Fighting!";
-        while (team != target.GetComponent<UnitScript>().team)
+        while (target.GetComponent<GlobalScript>().isAlive)
         {
-            if (target != null)
+            if (GetComponent<GlobalScript>().team != target.GetComponent<GlobalScript>().team)
             {
                 GetComponent<NavMeshAgent>().destination = target.gameObject.transform.position;
                 GetComponent<NavMeshAgent>().isStopped = false;
 
-                while (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + range))
+                if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= (1 + range))
                 {
-                    yield return null;
+                    GetComponent<NavMeshAgent>().isStopped = true;
+                    //Debug.Log(name + " Attacked " + target.name);
+                    transform.LookAt(target.transform);
+                    target.GetComponent<GlobalScript>().health -= damage;
+
+                    yield return new WaitForSeconds(1);
                 }
-
-                GetComponent<NavMeshAgent>().isStopped = true;
-                yield return new WaitForSeconds(1);
-
-                Debug.Log(name + " Attacked " + target.name);
-                target.GetComponent<UnitScript>().currentHealth -= damage;
-
-                newTarget(target);
+                if (target == null || !target.GetComponent<GlobalScript>().isAlive)
+                {
+                    Reset();
+                }
             }
-        }
+            yield return null;
+        } 
     }
 
-    private IEnumerator Alert()
+    private void Alert()
     {
         state = "Hunting";
-        while (target == null)
-        {
+        Reset();
 
-            foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
+        foreach (GameObject unit in GameObject.FindGameObjectsWithTag("Unit"))
+        {
+            if (unit.GetComponent<UnitScript>().team != team)
             {
-                if (unit.GetComponent<UnitScript>().team != team)
+                if (Vector3.Distance(transform.position, unit.transform.position) <= detectionRange)
                 {
-                    if (Vector3.Distance(transform.position, unit.transform.position) <= 5)
+                    target = unit;
+                }
+            }
+            if (target != null)
+            {
+                if (target.GetComponent<GlobalScript>().team != team)
+                {
+                    newTarget(target);
+                    break;
+                }  
+                else target = null;
+            }    
+        }
+
+        if (target == null)
+        {
+            foreach (GameObject structure in GameObject.FindGameObjectsWithTag("Structure"))
+            {
+                if (structure.GetComponent<GlobalScript>().team != team)
+                {
+                    if (Vector3.Distance(transform.position, structure.transform.position) <= detectionRange)
                     {
-                        target = unit;
+                        newTarget(structure);
+                        break;
                     }
                 }
-                if (target != null) break;
             }
-
-            if (target != null) newTarget(target);
-            yield return null;
         }
     }
 }

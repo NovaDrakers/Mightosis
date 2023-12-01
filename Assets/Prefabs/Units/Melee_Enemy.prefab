@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 7381220199088663550}
   - component: {fileID: 5276965906645132433}
   - component: {fileID: 682480616082486155}
+  - component: {fileID: -6373167850164891214}
   m_Layer: 0
   m_Name: Melee_Enemy
   m_TagString: Unit
@@ -173,10 +174,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   team: 1
   wait: 0.1
+  state: 
   range: 1
   maxHealth: 100
-  currentHealth: 0
   damage: 0
+  detectionRange: 0
 --- !u!195 &7381220199088663550
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -196,7 +198,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!135 &5276965906645132433
@@ -232,15 +234,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daed14b95f3b5c24aa56496fcc7e9924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  healthBarPrefab: {fileID: 0}
-  animator: {fileID: 0}
+--- !u!114 &-6373167850164891214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577529917510070920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55f1b81db8e6ef4b898c15363dbf55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   team: 0
-  wait: 0.1
-  range: 1
-  maxHealth: 100
-  currentHealth: 0
-  damage: 0
+  health: 0
+  maxHealth: 0
+  isAlive: 0
+  type: 
+  HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
 --- !u!1 &8850923267343241584
 GameObject:
   m_ObjectHideFlags: 0
