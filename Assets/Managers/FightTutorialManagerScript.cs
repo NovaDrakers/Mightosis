@@ -10,14 +10,17 @@ public class FightTutorialManagerScript : MonoBehaviour
 
 
     public GameObject enemyNucleus;
-    public bool enemyNucleusKilled;
     public GameObject enemyUnit;
-    public bool enemyKilled;
+    
 
     public GameObject nucleus;
 
     public FightTutorialManagerScript instance;
     public FightTutorialState state;
+
+    public GameObject MainUi;
+
+    public GameObject temp;
 
 
     public GameObject golgiInformation;
@@ -37,7 +40,7 @@ public class FightTutorialManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance.UpdateFightTutorialState(FightTutorialState.CreateGolgi);
     }
 
     // Update is called once per frame
@@ -106,16 +109,11 @@ public class FightTutorialManagerScript : MonoBehaviour
 
         killingUnitsInformation.SetActive(true);
 
-        GameObject temp = Instantiate(enemyUnit, new Vector3(nucleus.transform.position.x + 10, 0f, nucleus.transform.position.z + 10), nucleus.transform.rotation);
+        temp = Instantiate(enemyUnit, new Vector3(nucleus.transform.position.x + 10, 0f, nucleus.transform.position.z + 10), nucleus.transform.rotation);
 
         mainCamera.transform.position = new Vector3(temp.transform.position.x, mainCamera.transform.position.y, temp.transform.position.z);
 
-        StartCoroutine(checkForEnemy(temp));
-
-        if(enemyKilled == true)
-        {
-            instance.UpdateFightTutorialState(FightTutorialState.KillENucleus);
-        }
+        
     }
 
     private void HandleKillENucleus()
@@ -124,12 +122,9 @@ public class FightTutorialManagerScript : MonoBehaviour
 
         killingBuildingsInformation.SetActive(true);
 
-        StartCoroutine(checkForEnemyNucleus(enemyNucleus));
+        
 
-        if(enemyNucleusKilled == true)
-        {
-            instance.UpdateFightTutorialState(FightTutorialState.Win);
-        }
+        
     }
 
     private void HandleWin()
@@ -142,33 +137,9 @@ public class FightTutorialManagerScript : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    IEnumerator checkForEnemy(GameObject temp)
-    {
-        while (enemyKilled == false)
-        {
-            if(temp == null)
-            {
-                enemyKilled = true;
-            }
+    
 
-
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
-
-    IEnumerator checkForEnemyNucleus(GameObject enemyNucleus)
-    {
-        while (enemyNucleusKilled == false)
-        {
-            if (enemyNucleus == null)
-            {
-                enemyNucleusKilled = true;
-            }
-
-
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
+    
 
     public enum FightTutorialState
     {
