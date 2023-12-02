@@ -276,6 +276,7 @@ MonoBehaviour:
   maxHealth: 100
   damage: 0
   detectionRange: 0
+  mobileHunt: 0
 --- !u!114 &-2925803286843800844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   protein: 0
   Nucleus: {fileID: 0}
-  Panel: {fileID: 5583148179338481705, guid: 288a6a6a9fbc4a64a85911eb1eb7a91a, type: 3}
+  Panel: {fileID: 7854631367554772467, guid: 2a284693d4758fc45810dabd8cd04b72, type: 3}
   team: 0
 --- !u!195 &9052726416231138029
 NavMeshAgent:
