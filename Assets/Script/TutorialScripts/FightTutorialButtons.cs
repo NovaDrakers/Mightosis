@@ -153,7 +153,7 @@ public class FightTutorialButtons : MonoBehaviour
     {
         while (enemyKilled == false)
         {
-            if (GameObject.Find("Melee_Enemy(Clone)") == null)
+            if (GameObject.Find("Enemy(Clone)") == null)
             {
                 enemyKilled = true;
                 this.closeKillingUnitsInformation();
@@ -191,7 +191,8 @@ public class FightTutorialButtons : MonoBehaviour
     public void closeWinText()
     {
         FightTutorialManager.GetComponent<FightTutorialManagerScript>().winText.SetActive(false);
-        GameObject.Find("BuildTutorialManager").GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.FightSceneMove);
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.FightSceneMove);
+        Debug.Log("Trying to move to new scene");
     }
 
 
