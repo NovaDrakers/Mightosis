@@ -77,6 +77,7 @@ public class FightTutorialManagerScript : MonoBehaviour
                 HandleWin();
                 break;
             case FightTutorialState.FightSceneMove:
+                HandleSceneMove();
                 break;
 
 
@@ -120,11 +121,7 @@ public class FightTutorialManagerScript : MonoBehaviour
     {
         mainCamera.transform.position = new Vector3(enemyNucleus.transform.position.x, mainCamera.transform.position.y, enemyNucleus.transform.position.z);
 
-        killingBuildingsInformation.SetActive(true);
-
-        
-
-        
+        killingBuildingsInformation.SetActive(true);        
     }
 
     private void HandleWin()
@@ -132,9 +129,9 @@ public class FightTutorialManagerScript : MonoBehaviour
         winText.SetActive(true);
     }
 
-    private void SceneMove()
+    private void HandleSceneMove()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainGame");
     }
 
     
