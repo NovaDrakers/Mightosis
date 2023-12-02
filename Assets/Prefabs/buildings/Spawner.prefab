@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1287990946228082534}
   - component: {fileID: 9022872413544499975}
   - component: {fileID: 6020121264366694128}
+  - component: {fileID: -5811414534586254896}
   - component: {fileID: 6814213156965415503}
   - component: {fileID: 630104560808234476}
   - component: {fileID: -9062896736273124975}
@@ -51,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 0
   team: 1
-  currentHealth: 0
+  maxHealth: 0
 --- !u!212 &9022872413544499975
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -116,6 +117,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7088ce6c2c8afe84d9f8d5dbf3f68066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5811414534586254896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530100224924746733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a5609ff0ad95742b10935a14d8ea61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 8577529917510070920, guid: b72fea49175506441accc3cde5a27db6, type: 3}
 --- !u!208 &6814213156965415503
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -166,6 +180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
+  defense: 0
+  attack: 0
+  maxHealth: 0
   health: 0
+  range: 0
   isAlive: 0
+  type: 
   HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}

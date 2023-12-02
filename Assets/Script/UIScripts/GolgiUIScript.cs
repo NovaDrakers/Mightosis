@@ -52,34 +52,52 @@ public class GolgiUIScript : MonoBehaviour
     public void CreateTroop(string troop)
     {
         Nucleus = GameObject.Find("Nucleus");
-        if (Nucleus.GetComponent<NucleusScript>().protein >= 100 && GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population != GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().maxPopulation)
+
+        if (GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population < GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().maxPopulation)
         {
-            Nucleus.GetComponent<NucleusScript>().protein -= 100;
-            switch (troop)
+            if (Nucleus.GetComponent<NucleusScript>().protein >= 100)
             {
-                case "Ranged":
+                Nucleus.GetComponent<NucleusScript>().protein -= 100;
+                switch (troop)
+                {
+                    case "Ranged":
 
-                    Selected.GetComponent<GolgiScript>().ranged++;
-                    break;
+                        Selected.GetComponent<GolgiScript>().ranged++;
+                        break;
 
-                case "Melee":
+                    case "Melee":
 
-                    Selected.GetComponent<GolgiScript>().melee++;
-                    break;
+                        Selected.GetComponent<GolgiScript>().melee++;
+                        break;
 
-                case "Tank":
+                    case "Tank":
 
-                    Selected.GetComponent<GolgiScript>().tank++;
-                    break;
+                        Selected.GetComponent<GolgiScript>().tank++;
+                        break;
 
-                default:
+                    default:
 
-                    break;
+                        break;
+                }
+                GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population++;
+            }
+            else
+            {
+                GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().Error("You do not have enough Protein");
             }
         }
+        else
+        {
+            Debug.Log("Population is at Maximum");
+            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().Error("Population is at Maximum");
+        }
+            
+            
+
+
         Debug.Log("" + ranged + ", " + melee + ", " + tank);
 
-        GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population++;
+        
     }
 
     public void SpawnTroop(string troop)

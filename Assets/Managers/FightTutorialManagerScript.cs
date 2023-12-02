@@ -110,7 +110,7 @@ public class FightTutorialManagerScript : MonoBehaviour
 
         killingUnitsInformation.SetActive(true);
 
-        temp = Instantiate(enemyUnit, new Vector3(nucleus.transform.position.x + 10, 0f, nucleus.transform.position.z + 10), nucleus.transform.rotation);
+        temp = Instantiate(enemyUnit, new Vector3(nucleus.transform.position.x + 10, 0f, nucleus.transform.position.z), nucleus.transform.rotation);
 
         mainCamera.transform.position = new Vector3(temp.transform.position.x, mainCamera.transform.position.y, temp.transform.position.z);
 

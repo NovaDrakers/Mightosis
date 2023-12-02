@@ -42,6 +42,16 @@ public class GlobalScript : MonoBehaviour
         if (health <= 0)
         {
             isAlive = false;
+
+            
+            if (gameObject.name == "Nucleus")
+            {
+                GameManager.Instance.UpdateGameState(GameState.SceneLose);
+            } else if (gameObject.name == "Mysterious Mass")
+            {
+                GameManager.Instance.UpdateGameState(GameState.SceneWin);
+            }
+            
             switch (type)
             {
                 case "building":

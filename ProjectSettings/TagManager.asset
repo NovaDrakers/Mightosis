@@ -11,6 +11,7 @@ TagManager:
   - Outline
   - BuilderReminder
   - Structure
+  - ProteinMound
   layers:
   - Default
   - TransparentFX

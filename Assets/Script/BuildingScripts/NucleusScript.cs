@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class NucleusScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public int protein;
-    public int health;
     public GameObject Panel;
     
 
     public GameObject Builder;
+
 
     
 
@@ -27,15 +28,15 @@ public class NucleusScript : MonoBehaviour
     void Update()
     {
         //handling of game lose
-        if(health == 0)
-        {
-          
-            //GameManager.Instance.UpdateGameState(GameState.SceneLose);
-        }
-
     }
 
-    
+    private void OnDestroy()
+    {
+        //GameManager.Instance.UpdateGameState(GameState.SceneLose);
+        
+
+        
+    }
 
     private void OnMouseDown()
     {

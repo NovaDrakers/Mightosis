@@ -144,6 +144,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Population
       objectReference: {fileID: 0}
+    - target: {fileID: 2586346300021819063, guid: 05db22e73067f47298102cd2a70e73b3, type: 3}
+      propertyPath: m_fontSize
+      value: 33.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586346300021819063, guid: 05db22e73067f47298102cd2a70e73b3, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 890327840229448870, guid: 05db22e73067f47298102cd2a70e73b3, type: 3}

@@ -9,12 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 0f8577f2a38838c4a95175e114f7926c
   - enabled: 1
-    path: Assets/Scenes/MainGame.unity
-    guid: 9458024c951d7d44895de943b1a2b055
+    path: Assets/Scenes/BuildingTutorial.unity
+    guid: d54a108bc875caf4ba2e7f3a063a504a
   - enabled: 1
     path: Assets/Scenes/FightingTutorial.unity
     guid: f7cecdbd108aa4b4bade2159095e8ab6
   - enabled: 1
-    path: Assets/Scenes/BuildingTutorial.unity
-    guid: d54a108bc875caf4ba2e7f3a063a504a
+    path: Assets/Scenes/MainGame.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: ccaad2a51cae92c45a1f4ea040da162f
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: 98809bff5e8706b48a152563c929797d
   m_configObjects: {}

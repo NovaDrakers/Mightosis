@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -40,6 +39,16 @@ public class PlayerManagerScript : MonoBehaviour
     // --------------------------------------------------
 
     public float[] upgradeValues = new float[9];
+
+    public GameObject ErrorMessage;
+
+    public void Error(string message)
+    {
+        GameObject temp = Instantiate(ErrorMessage, GameObject.Find("MainUICanvas").transform);
+        temp.GetComponent<TextMeshProUGUI>().text = message;
+
+        Destroy(temp,1.5f);
+    }
 
     // Start is called before the first frame update
     void Start()

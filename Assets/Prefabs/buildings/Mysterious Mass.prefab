@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1375136207203043201}
   - component: {fileID: 6633544267055049820}
-  - component: {fileID: 6792929709873182567}
   - component: {fileID: 29025998700921196}
   - component: {fileID: -8465108513706188901}
   - component: {fileID: 8184845262507196324}
   - component: {fileID: 2463108659193586776}
+  - component: {fileID: 6792929709873182567}
+  - component: {fileID: -1439390114570623799}
   m_Layer: 0
   m_Name: Mysterious Mass
   m_TagString: Untagged
@@ -89,27 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6792929709873182567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823720047454501667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55f1b81db8e6ef4b898c15363dbf55a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  team: 0
-  defense: 0
-  attack: 0
-  maxHealth: 0
-  health: 0
-  range: 0
-  isAlive: 0
-  type: 
-  HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
 --- !u!135 &29025998700921196
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -174,3 +154,36 @@ MonoBehaviour:
   cost: 0
   team: 1
   maxHealth: 0
+--- !u!114 &6792929709873182567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823720047454501667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55f1b81db8e6ef4b898c15363dbf55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  defense: 0
+  attack: 0
+  maxHealth: 0
+  health: 0
+  range: 0
+  isAlive: 0
+  type: 
+  HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
+--- !u!114 &-1439390114570623799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823720047454501667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d888a06d9050e7498a317785cc532ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
