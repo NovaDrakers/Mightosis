@@ -23,10 +23,10 @@ public class NucleusUIScript : MonoBehaviour
 
     }
 
-    public void GiveProtein()
+    /*public void GiveProtein()
     {
         GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein += 100;
-    }
+    }*/
 
     public void CreateWorker()
     {
