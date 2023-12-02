@@ -29,8 +29,9 @@ public class PlayerManagerScript : MonoBehaviour
     //for player ui --------------------------------
     public int atp;
     public int protein;
-    public int population;
+    public float population = 0f;
     public int timer;
+    public float maxPopulation = 5f;
 
     public TextMeshProUGUI atpText;
     public TextMeshProUGUI proteinText;
@@ -140,7 +141,7 @@ public class PlayerManagerScript : MonoBehaviour
         GameObject nucleus = GameObject.Find("Nucleus");
 
         proteinText.text = "Protein: " + nucleus.GetComponent<NucleusScript>().protein.ToString();
-        populationText.text = "Population: " + population.ToString();
+        populationText.text = "Population: " + population.ToString() + "/" + maxPopulation.ToString();
         timerText.text = Time.timeSinceLevelLoad.ToString();
         //-------------------------------------------------------------------------------------------------------
     }

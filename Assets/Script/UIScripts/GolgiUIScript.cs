@@ -52,7 +52,7 @@ public class GolgiUIScript : MonoBehaviour
     public void CreateTroop(string troop)
     {
         Nucleus = GameObject.Find("Nucleus");
-        if (Nucleus.GetComponent<NucleusScript>().protein >= 100)
+        if (Nucleus.GetComponent<NucleusScript>().protein >= 100 && GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population != GameObject.Find("PlayerMangaer").GetComponent<PlayerManagerScript>().maxPopulation)
         {
             Nucleus.GetComponent<NucleusScript>().protein -= 100;
             switch (troop)
@@ -78,6 +78,8 @@ public class GolgiUIScript : MonoBehaviour
             }
         }
         Debug.Log("" + ranged + ", " + melee + ", " + tank);
+
+        GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population++;
     }
 
     public void SpawnTroop(string troop)
