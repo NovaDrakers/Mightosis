@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class BuildTutorialManagerScript : MonoBehaviour
 {
-
     public Camera mainCamera;
+
+
     public GameObject nucleus;
     public GameObject proteinMound;
 
@@ -86,7 +87,6 @@ public class BuildTutorialManagerScript : MonoBehaviour
 
     private void HandleNucleusInfo()
     {
-
         mainCamera.GetComponent<Rigidbody>().position = new Vector3(3f, 6f, -11.5f);
         nucleusInformation.SetActive(true);
     }
