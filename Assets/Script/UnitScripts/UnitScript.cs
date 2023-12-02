@@ -23,9 +23,6 @@ public class UnitScript : MonoBehaviour
 
     public string state;
 
-    public float range = 1f;
-
-    public int maxHealth = 100;
     public int damage;
 
     public int detectionRange;
@@ -37,9 +34,9 @@ public class UnitScript : MonoBehaviour
         GetComponent<GlobalScript>().isAlive = true;
         GetComponent<GlobalScript>().team = team;
 
-        GetComponent<GlobalScript>().maxHealth = maxHealth;
+
         GetComponent<GlobalScript>().type = "unit";
-        damage = 10;
+        
         animator = GetComponentInChildren<Animator>();
 
         detectionRange = 5;
@@ -75,7 +72,7 @@ public class UnitScript : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population--;
+        if (GetComponent<GlobalScript>().team == 0) GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population--;
     }
 
     private void Reset()
@@ -171,12 +168,12 @@ public class UnitScript : MonoBehaviour
                 GetComponent<NavMeshAgent>().destination = target.gameObject.transform.position;
                 GetComponent<NavMeshAgent>().isStopped = false;
 
-                if (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) <= (1 + range))
+                if (Mathf.Abs(Vector3.Distance(transform.position, GetComponent<NavMeshAgent>().destination)) <= (1 + GetComponent<GlobalScript>().range))
                 {
                     GetComponent<NavMeshAgent>().isStopped = true;
                     //Debug.Log(name + " Attacked " + target.name);
                     transform.LookAt(target.transform);
-                    target.GetComponent<GlobalScript>().health -= damage;
+                    target.GetComponent<GlobalScript>().health -= GetComponent<GlobalScript>().attack *  10 / target.GetComponent<GlobalScript>().defense;
 
                     yield return new WaitForSeconds(1);
                 }

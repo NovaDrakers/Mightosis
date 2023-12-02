@@ -12,7 +12,6 @@ public class HealthScript : MonoBehaviour
     private void Start()
     {
         slider = GetComponentInChildren<Slider>();
-        slider.maxValue = gameObject.GetComponentInParent<GlobalScript>().maxHealth;
 
         //offset = new Vector3(-.05f, 0f, -0.33f);
         rotation = GetComponentInParent<Transform>().rotation;
@@ -21,6 +20,7 @@ public class HealthScript : MonoBehaviour
     private void Update()
     {
         slider.value = gameObject.GetComponentInParent<GlobalScript>().health;
+        slider.maxValue = gameObject.GetComponentInParent<GlobalScript>().maxHealth;
 
         transform.localRotation = rotation;
     }

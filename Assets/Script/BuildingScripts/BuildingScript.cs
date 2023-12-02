@@ -16,6 +16,8 @@ public class BuildingScript : MonoBehaviour
 
         GetComponent<GlobalScript>().maxHealth = 1000;
         GetComponent<GlobalScript>().type = "building";
+
+        GetComponent<GlobalScript>().defense = 10;
     }
 
     // Update is called once per frame

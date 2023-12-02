@@ -39,14 +39,14 @@ public class PlayerManagerScript : MonoBehaviour
     public TextMeshProUGUI timerText;
     // --------------------------------------------------
 
-    float[] values = new float[9];
+    public float[] upgradeValues = new float[9];
 
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < 9; i++)
         {
-            values[i] = 0;
+            upgradeValues[i] = 0;
         }
     }
 

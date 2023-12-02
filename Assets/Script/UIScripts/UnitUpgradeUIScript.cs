@@ -30,7 +30,7 @@ public class UnitUpgradeUIScript : MonoBehaviour
     {
         for (int i = 0; i < 9; i++)
         {
-            //TextMeshes[i].text = "+" + values[i].ToString() + "%";
+            TextMeshes[i].text = "+" + GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().upgradeValues[i] + "%";
         }
     }
 
@@ -41,6 +41,16 @@ public class UnitUpgradeUIScript : MonoBehaviour
 
     public void Upgrade(int which)
     {
+        if (GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().atp >= 10)
+        {
+            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().atp -=10;
+            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().upgradeValues[which] += 10;
+        }
+        else
+        {
+            Debug.Log("You need more ATP");
+        }
+        
         
     }
 }
