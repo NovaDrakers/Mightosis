@@ -12,6 +12,8 @@ public class GolgiUIScript : MonoBehaviour
     public GameObject Melee;
     public GameObject Tank;
 
+    public GameObject UpgradePanel;
+
     GameObject Nucleus;
 
     int ranged = 0;
@@ -41,7 +43,11 @@ public class GolgiUIScript : MonoBehaviour
         }
     }
 
-
+    public void openUpgrades()
+    {
+        Debug.Log("opened");
+        Instantiate(UpgradePanel, GameObject.Find("MainUICanvas").transform);
+    }
 
     public void CreateTroop(string troop)
     {
