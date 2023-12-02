@@ -5,8 +5,7 @@ using UnityEngine;
 public class GlobalScript : MonoBehaviour
 {
     public int team;
-    public int health;
-    public int maxHealth;
+    public float defense, attack, maxHealth, health, range;
     public bool isAlive;
 
     public string type;
@@ -15,22 +14,26 @@ public class GlobalScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
         GameObject temp;
 
-        switch (type)
+        if (HealthBarPrefab != null)
         {
-            case "building":
-                temp = Instantiate(HealthBarPrefab, transform.position, Quaternion.Euler(0, 0, 0), transform);
-                temp.transform.localPosition = new Vector3(-.05f, -0.6f, -0.001f);
-                break;
-            case "unit":
-                temp = Instantiate(HealthBarPrefab, transform.position + new Vector3(-.06f, -0.035f, -0.35f), Quaternion.Euler(90, 0, 0), transform);
-                temp. transform.localPosition = new Vector3(-.06f, -0.035f, -0.35f);
-                break;
-            default:
-                break;
+            switch (type)
+            {
+                case "building":
+                    temp = Instantiate(HealthBarPrefab, transform.position, Quaternion.Euler(0, 0, 0), transform);
+                    temp.transform.localPosition = new Vector3(-.05f, -0.6f, -0.001f);
+                    break;
+                case "unit":
+                    temp = Instantiate(HealthBarPrefab, transform.position + new Vector3(-.06f, -0.035f, -0.35f), Quaternion.Euler(90, 0, 0), transform);
+                    temp.transform.localPosition = new Vector3(-.06f, -0.035f, -0.35f);
+                    break;
+                default:
+                    break;
+            }
         }
+
+        health = maxHealth;
     }
 
     // Update is called once per frame

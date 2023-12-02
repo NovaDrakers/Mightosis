@@ -214,10 +214,10 @@ GameObject:
   - component: {fileID: 7060867048065498896}
   - component: {fileID: -8558806529604178030}
   - component: {fileID: 7581049606773480933}
-  - component: {fileID: -2925803286843800844}
   - component: {fileID: 9052726416231138029}
   - component: {fileID: 884907033104207164}
   - component: {fileID: 6699688354503630547}
+  - component: {fileID: -2925803286843800844}
   m_Layer: 0
   m_Name: Builder
   m_TagString: Unit
@@ -272,27 +272,9 @@ MonoBehaviour:
   team: 0
   wait: 0.1
   state: 
-  range: 1
-  maxHealth: 100
   damage: 0
   detectionRange: 0
   mobileHunt: 0
---- !u!114 &-2925803286843800844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8058363111763403497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aceba9721f1f249429b759e93879d07f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  protein: 0
-  Nucleus: {fileID: 0}
-  Panel: {fileID: 7854631367554772467, guid: 2a284693d4758fc45810dabd8cd04b72, type: 3}
-  team: 0
 --- !u!195 &9052726416231138029
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -349,8 +331,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  health: 0
+  defense: 0
+  attack: 0
   maxHealth: 0
+  health: 0
+  range: 0
   isAlive: 0
   type: 
   HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}
+--- !u!114 &-2925803286843800844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058363111763403497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aceba9721f1f249429b759e93879d07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  protein: 0
+  Nucleus: {fileID: 0}
+  Panel: {fileID: 7854631367554772467, guid: 2a284693d4758fc45810dabd8cd04b72, type: 3}
+  team: 0

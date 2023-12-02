@@ -8,7 +8,6 @@ using UnityEngine.SocialPlatforms;
 
 public class BuilderScript : MonoBehaviour
 {
-    float range;
     public int protein;
     public GameObject Nucleus;
     public GameObject Panel;
@@ -18,11 +17,15 @@ public class BuilderScript : MonoBehaviour
     private void Start()
     {
         protein = 0;
+
+        GetComponent<GlobalScript>().maxHealth = 30;
+        GetComponent<GlobalScript>().attack = 5;
+        GetComponent<GlobalScript>().defense = 10;
+        GetComponent<GlobalScript>().range = 1f;
     }
 
     private void Update()
     {
-        range = GetComponent<UnitScript>().range;
         Nucleus = GameObject.Find("Nucleus");
     }
 
@@ -37,7 +40,7 @@ public class BuilderScript : MonoBehaviour
 
         if (protein < 100)
         {
-            while (Mathf.Abs(Vector3.Distance(transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + range))
+            while (Mathf.Abs(Vector3.Distance(transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + GetComponent<GlobalScript>().range))
             {
                 yield return null;
             }
@@ -70,7 +73,7 @@ public class BuilderScript : MonoBehaviour
         GetComponent<NavMeshAgent>().destination = Nucleus.gameObject.transform.position;
         GetComponent<NavMeshAgent>().isStopped = false;
 
-        while (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + range))
+        while (Mathf.Abs(Vector3.Distance(this.transform.position, GetComponent<NavMeshAgent>().destination)) >= (1 + GetComponent<GlobalScript>().range))
         {
             yield return null;
         }

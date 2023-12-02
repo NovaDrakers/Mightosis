@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainEnemyScript : MonoBehaviour
 {
-    public GameObject Melee, Ranged, Tank;
+    public GameObject enemy;
     
     // Start is called before the first frame update
     void Start()
@@ -22,23 +22,8 @@ public class MainEnemyScript : MonoBehaviour
     {
         while (1 == 1)
         {
-            int random = Random.Range(1, 3);
-
-            switch (random)
-            {
-                case 1:
-                    SummonandGo(Melee);
-                    break;
-                case 2:
-                    SummonandGo(Ranged);
-                    break;
-                case 3:
-                    SummonandGo(Tank);
-                    break;
-            };
-
-
             yield return new WaitForSeconds(3);
+            SummonandGo(enemy);
         }
     }
 
