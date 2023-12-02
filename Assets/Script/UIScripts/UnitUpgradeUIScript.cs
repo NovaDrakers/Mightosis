@@ -30,7 +30,7 @@ public class UnitUpgradeUIScript : MonoBehaviour
     {
         for (int i = 0; i < 9; i++)
         {
-            TextMeshes[i].text = "+" + values[i].ToString() + "%";
+            //TextMeshes[i].text = "+" + values[i].ToString() + "%";
         }
     }
 
