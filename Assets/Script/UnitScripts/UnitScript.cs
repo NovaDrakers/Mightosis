@@ -73,6 +73,11 @@ public class UnitScript : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population--;
+    }
+
     private void Reset()
     {
         target = null;
