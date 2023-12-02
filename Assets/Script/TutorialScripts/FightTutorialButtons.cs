@@ -8,28 +8,35 @@ public class FightTutorialButtons : MonoBehaviour
     public bool troopsCreated = false;
     public bool mitochondriaCreated = false;
 
+
+    public bool enemyNucleusKilled = false;
+    public bool enemyKilled = false;
+
     public GameObject golgiReminder;
     public GameObject troopCreationReminder;
     public GameObject mitochondriaReminder;
+
+    public GameObject FightTutorialManager;
 
 
     private void Start()
     {
         StartCoroutine(checkForGolgi());
         StartCoroutine(checkForTroops());
+        StartCoroutine(checkForMitochondria());
+        
     }
 
     public void closeGolgiInformation()
     {
         if(golgiCreated == true)
         {
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().golgiInformation.SetActive(false);
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.CreateEach);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().golgiInformation.SetActive(false);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.CreateEach);
         }
         else if (golgiCreated == false)
-        {
-
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().golgiInformation.SetActive(false);
+        { 
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().golgiInformation.SetActive(false);
             golgiReminder.SetActive(true);
         }
          
@@ -38,7 +45,7 @@ public class FightTutorialButtons : MonoBehaviour
     public void closeGolgiReminder()
     {
         golgiReminder.SetActive(false);
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().golgiInformation.SetActive(true);
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().golgiInformation.SetActive(true);
     }
 
     IEnumerator checkForGolgi()
@@ -47,7 +54,7 @@ public class FightTutorialButtons : MonoBehaviour
         while (golgiCreated == false)
         {
 
-            if (GameObject.Find("Golgi-apparatus") != null)
+            if (GameObject.Find("Golgi-apparatus(Clone)") != null)
             {
                 golgiCreated = true;
             }
@@ -60,12 +67,12 @@ public class FightTutorialButtons : MonoBehaviour
     {
         if (troopsCreated == true)
         {
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().troopCreationInformation.SetActive(false);
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.CreateMitochondria);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().troopCreationInformation.SetActive(false);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.CreateMitochondria);
         }
         else if(troopsCreated == false)
         {
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().troopCreationInformation.SetActive(false);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().troopCreationInformation.SetActive(false);
             troopCreationReminder.SetActive(true);
         }
     }
@@ -73,7 +80,7 @@ public class FightTutorialButtons : MonoBehaviour
     public void closeTroopCreationReminder()
     {
         troopCreationReminder.SetActive(false);
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().troopCreationInformation.SetActive(true);
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().troopCreationInformation.SetActive(true);
     }
 
     IEnumerator checkForTroops()
@@ -82,7 +89,7 @@ public class FightTutorialButtons : MonoBehaviour
         while (troopsCreated == false)
         {
 
-            if (GameObject.Find("Ranged") != null && GameObject.Find("Melee") != null && GameObject.Find("Tank") != null)
+            if (GameObject.Find("Ranged(Clone)") != null && GameObject.Find("Melee(Clone)") != null && GameObject.Find("Tank(Clone)") != null)
             {
                 troopsCreated = true;
             }
@@ -95,12 +102,12 @@ public class FightTutorialButtons : MonoBehaviour
     {
         if(mitochondriaCreated == true)
         {
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().mitochondriaInformation.SetActive(false);
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.UpgradeUnits);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().mitochondriaInformation.SetActive(false);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.UpgradeUnits);
         }
         else if (mitochondriaCreated == false)
         {
-            GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().mitochondriaInformation.SetActive(false);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().mitochondriaInformation.SetActive(false);
             mitochondriaReminder.SetActive(true);
         }
     }
@@ -108,7 +115,7 @@ public class FightTutorialButtons : MonoBehaviour
     public void closeMitochondriaReminder()
     {
         mitochondriaReminder.SetActive(false);
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().mitochondriaInformation.SetActive(true);
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().mitochondriaInformation.SetActive(true);
     }
 
     IEnumerator checkForMitochondria()
@@ -117,7 +124,7 @@ public class FightTutorialButtons : MonoBehaviour
         while (mitochondriaCreated == false)
         {
 
-            if (GameObject.Find("Mitochondria") != null)
+            if (GameObject.Find("Mitochondria(Clone)") != null)
             {
                 mitochondriaCreated = true;
             }
@@ -129,26 +136,61 @@ public class FightTutorialButtons : MonoBehaviour
 
     public void closeUpgradeUnitsInformation()
     {
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().upgradeUnitsInformation.SetActive(false);
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.KillEUnit);
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().upgradeUnitsInformation.SetActive(false);
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.KillEUnit);
+        StartCoroutine(checkForEnemy());
     }
 
     public void closeKillingUnitsInformation()
     {
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().killingUnitsInformation.SetActive(false);
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.KillENucleus);
+
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().killingUnitsInformation.SetActive(false);
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.KillENucleus);
+        StartCoroutine(checkForEnemyNucleus());
+    }
+
+    IEnumerator checkForEnemy()
+    {
+        while (enemyKilled == false)
+        {
+            if (GameObject.Find("Melee_Enemy(Clone)") == null)
+            {
+                enemyKilled = true;
+                this.closeKillingUnitsInformation();
+            }
+
+
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void closeKillingBuildingsInformation()
     {
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().killingBuildingsInformation.SetActive(false);
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.Win);
+        
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().killingBuildingsInformation.SetActive(false);
+            FightTutorialManager.GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.Win);
+        
     }
 
-   
+    IEnumerator checkForEnemyNucleus()
+    {
+        while (enemyNucleusKilled == false)
+        {
+            if (GameObject.Find("Spawner") == null)
+            {
+                enemyNucleusKilled = true;
+                this.closeKillingBuildingsInformation();
+            }
+
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+
     public void closeWinText()
     {
-        GameObject.Find("FightTutorialManager").GetComponent<FightTutorialManagerScript>().winText.SetActive(false);
+        FightTutorialManager.GetComponent<FightTutorialManagerScript>().winText.SetActive(false);
         GameObject.Find("BuildTutorialManager").GetComponent<FightTutorialManagerScript>().UpdateFightTutorialState(FightTutorialManagerScript.FightTutorialState.FightSceneMove);
     }
 
