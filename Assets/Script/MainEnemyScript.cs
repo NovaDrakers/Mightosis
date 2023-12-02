@@ -22,7 +22,7 @@ public class MainEnemyScript : MonoBehaviour
     {
         while (1 == 1)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(60);
             SummonandGo(enemy);
         }
     }

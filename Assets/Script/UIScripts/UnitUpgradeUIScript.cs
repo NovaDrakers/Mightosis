@@ -48,7 +48,7 @@ public class UnitUpgradeUIScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("You need more ATP");
+            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().Error("You do not have enough ATP");
         }
         
         

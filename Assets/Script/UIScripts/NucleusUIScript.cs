@@ -29,24 +29,30 @@ public class NucleusUIScript : MonoBehaviour
     }*/
 
     public void CreateWorker()
-    {
-        if (Builder == null)
+    {       
+        if(GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population < GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().maxPopulation)
         {
-            Debug.Log("builder prefab not found");
+            if (GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein >= 100)
+            {
+                float randomAngle = Random.Range(1f, 2f * Mathf.PI);
+                float xOffset = spawnDistance * Mathf.Cos(randomAngle);
+                float zOffset = spawnDistance * Mathf.Sin(randomAngle);
+
+                Instantiate(Builder, new Vector3(NucleusPosition.x + xOffset, 0f, NucleusPosition.z + zOffset), Nucleus.transform.rotation);
+
+                GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population++;
+
+                GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein -=  100;
+                Debug.Log("builder instantiated");
+            }
+            else
+            {
+                GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().Error("You do not have enough Protein");
+            }
         }
-        else if (GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein >= 100 && (GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population < GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().maxPopulation))
+        else
         {
-            float randomAngle = Random.Range(1f, 2f * Mathf.PI);
-            float xOffset = spawnDistance * Mathf.Cos(randomAngle);
-            float zOffset = spawnDistance * Mathf.Sin(randomAngle);
-
-            Instantiate(Builder, new Vector3(NucleusPosition.x + xOffset, 0f, NucleusPosition.z + zOffset), Nucleus.transform.rotation);
-
-            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population++;
-
-            GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein -=  100;
-            Debug.Log("builder instantiated");
+            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().Error("Population is at Maximum");
         }
-
     }
 }

@@ -47,13 +47,6 @@ public class UnitScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        //##### UNCOMMENT THIS TO TEST THE HEALTHBAR ##### //
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GetComponent<GlobalScript>().health -= 25;
-        }
-
         if (GetComponent<GlobalScript>().health <= 0)
         {
             animator.Play("apoptosis");

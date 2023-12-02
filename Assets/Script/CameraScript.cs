@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class CameraScript : MonoBehaviour
 {
@@ -20,6 +21,23 @@ public class CameraScript : MonoBehaviour
     {
         //RB.velocity = velocity;
         RB.AddForce(velocity * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Vector3 CameraPosition;
+
+            CameraPosition = new Vector3(GameObject.Find("Nucleus").transform.position.x ,9, GameObject.Find("Nucleus").transform.position.z);
+
+            gameObject.transform.position = CameraPosition;
+        }
+
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainGame"))
+        {
+            if (transform.position.x < -28) transform.position = new Vector3(-28, transform.position.y, transform.position.z);
+            if (transform.position.z < -55.5) transform.position = new Vector3(transform.position.x, transform.position.y, -55.5f);
+            if (transform.position.z > -26) transform.position = new Vector3(transform.position.x, transform.position.y, -26);
+            if (transform.position.x > 24) transform.position = new Vector3(24, transform.position.y, transform.position.z);
+        }
         /*
         if (Input.mousePosition.x >= Screen.width *0.95 && Input.mousePosition.x <= Screen.width)
         {

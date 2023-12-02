@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7982474681022033705}
   m_Layer: 0
   m_Name: Protein
-  m_TagString: Structure
+  m_TagString: ProteinMound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 0
   team: 0
-  currentHealth: 0
+  maxHealth: 0
 --- !u!212 &1790544208115839557
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -167,6 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
+  defense: 0
+  attack: 0
+  maxHealth: 0
   health: 0
+  range: 0
   isAlive: 0
+  type: 
   HealthBarPrefab: {fileID: 8777947175781549707, guid: 76daa610139f2af4a9336d8f71485160, type: 3}

@@ -77,7 +77,11 @@ public class BuilderUIScript : MonoBehaviour
                     GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein -= building.GetComponent<BuildingScript>().cost;
                 } else Debug.Log("This is not a valid location");
             }
-        } else Debug.Log("Not Enough Protein");
+        }
+        else
+        {
+            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().Error("You do not have enough Protein");
+        }
 
         Destroy(cursor);
     }

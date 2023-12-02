@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BuildTutorialButtons : MonoBehaviour
 {
@@ -136,7 +137,7 @@ public class BuildTutorialButtons : MonoBehaviour
 
     public void closeTutorialEndInformation()
     {
-        GameObject.Find("BuildTutorialManager").GetComponent<BuildTutorialManagerScript>().UpdateTutorialState(TutorialState.SceneMove);
+        SceneManager.LoadScene("FightingTutorial");
     }
 
 
