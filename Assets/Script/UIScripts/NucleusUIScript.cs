@@ -34,7 +34,7 @@ public class NucleusUIScript : MonoBehaviour
         {
             Debug.Log("builder prefab not found");
         }
-        else if (GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein >= 100)
+        else if (GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein >= 100 && (GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population < GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().maxPopulation))
         {
             float randomAngle = Random.Range(1f, 2f * Mathf.PI);
             float xOffset = spawnDistance * Mathf.Cos(randomAngle);
@@ -42,6 +42,7 @@ public class NucleusUIScript : MonoBehaviour
 
             Instantiate(Builder, new Vector3(NucleusPosition.x + xOffset, 0f, NucleusPosition.z + zOffset), Nucleus.transform.rotation);
 
+            GameObject.Find("PlayerManager").GetComponent<PlayerManagerScript>().population++;
 
             GameObject.Find("Nucleus").GetComponent<NucleusScript>().protein -=  100;
             Debug.Log("builder instantiated");
