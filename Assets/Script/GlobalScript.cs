@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GlobalScript : MonoBehaviour
 {
@@ -46,10 +47,10 @@ public class GlobalScript : MonoBehaviour
             
             if (gameObject.name == "Nucleus")
             {
-                GameManager.Instance.UpdateGameState(GameState.SceneLose);
+                SceneManager.LoadScene("Lose");
             } else if (gameObject.name == "Mysterious Mass")
             {
-                GameManager.Instance.UpdateGameState(GameState.SceneWin);
+                SceneManager.LoadScene("WinScene");
             }
             
             switch (type)

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerManagerScript : MonoBehaviour
 {
@@ -62,6 +63,11 @@ public class PlayerManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             mousePositionDown = Input.mousePosition;
